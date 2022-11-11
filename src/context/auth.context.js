@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import {verifyService} from "../service/auth.services"
+import { verifyService } from "../service/auth.services"
  //importar los spinners aqui
 
 
@@ -67,7 +67,7 @@ import {verifyService} from "../service/auth.services"
 
  }
 
- export{
+ export {
     AuthContext,
     AuthWrapper
  }
