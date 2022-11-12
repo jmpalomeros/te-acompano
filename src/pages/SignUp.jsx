@@ -8,12 +8,23 @@ function SignUp() {
 
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
+  const[firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [age, setAge] = useState("")
+  const [city, setCity]= useState("")
+  const [avatar, setAvatar] = useState("")
+
 
   const [ errorMessage, setErrorMessage ] = useState("")
 
 
 const handleEmailChange = (e) => setEmail(e.target.value)
 const handlePasswordChange = (e) => setPassword(e.target.value)
+const handleFirstNameChange = (e) => setFirstName(e.target.value)
+const handleLastNameChange = (e) => setLastName(e.target.value)
+const handleAgeChange = (e) => setAge(e.target.value)
+const handleCityChange = (e) => setCity(e.target.value)
+const handleAvatarChange = (e) => setAvatar(e.target.value)
 
 
 
@@ -21,10 +32,17 @@ const handlePasswordChange = (e) => setPassword(e.target.value)
 
   const handleSignup = async (e) => {
     e.preventDefault()
+    
     const newUser = { 
-      email: email,
-      password: password
+      email: email, 
+      password: password, 
+      firstName: firstName, 
+      lastName: lastName, 
+      age: age, 
+      city: city, 
+      avatar: avatar
     }
+
     try {
       
       await signupService(newUser)
@@ -48,26 +66,27 @@ const handlePasswordChange = (e) => setPassword(e.target.value)
 
       <form onSubmit={handleSignup}>
 
-      {/* <label htmlFor="firstName">Nombre: </label>
-      <input type="text" name="firstName"/>
+      <label>Nombre: </label>
+      <input type="text" name="firstName" value={firstName} onChange={handleFirstNameChange}/>
       <br />
-      <label htmlFor="lastName">Apellidos: </label>
-      <input type="text" name="lastName"/>
-      <br /> */}
+      <label>Apellidos: </label>
+      <input type="text" name="lastName" value={lastName} onChange={handleLastNameChange}/>
+      <br />
       <label>Email: </label>
       <input type="email" name="email" value={email} onChange={handleEmailChange}/>
       <br />
       <label htmlFor="password">Contraseña: </label>
       <input type="password" name="password" value={password} onChange={handlePasswordChange}/>
       <br />
-      {/* <label htmlFor="avatar">Avatar: </label>
-      <input type="text" name="avatar"/>
+      <label>Avatar: </label>
+      <input type="text" name="avatar" value={avatar} onChange={handleAvatarChange}/>
       <br />
-      <label htmlFor="age">Edad: </label>
-      <input type="number" name="age"/>
-      <br /><label htmlFor="city">Ciudad: </label>
-      <input type="text" name="city"/>
-      <br /> */}
+      <label>Edad: </label>
+      <input type="number" name="age" value={age} onChange={handleAgeChange}/>
+      <br />
+      <label>Ciudad: </label>
+      <input type="text" name="city" value={city} onChange={handleCityChange}/>
+      <br />
       <button type="submit">Registrar</button>
       {errorMessage !== "" && <p>{errorMessage}</p> }
       </form>
