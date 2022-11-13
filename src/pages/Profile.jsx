@@ -2,10 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import CreateService from "../components/CreateService";
 import EditProfile from "../components/EditProfile"
-import ReviewedService from "../components/ReviewedService"
+import CreateReview from "../components/CreateReview"
 import {getUserDetailsService} from "../service/user.services"
 import {getAllServicesService} from "../service/service.services"
 import {useNavigate} from "react-router-dom"
+import EditService from "../components/EditService";
 
 
 function Profile() {
@@ -86,14 +87,23 @@ function Profile() {
       </div>
     <br />
     <hr />
+    <h3>Editar Perfil</h3>
+    <EditProfile />
+    <br />
+    <hr />
     <h3>Crear servicio </h3>
     <CreateService updateList={getDataService}/>
     <br />
     <hr />
-    <EditProfile />
+    <EditService />
     <br />
     <hr />
-    <ReviewedService />
+    <h3>Mis reseñas realizadas</h3>
+    <CreateReview />
+    <br />
+    <hr />
+    <h3>Mis reseñas recibidas</h3>
+    {/* <ReviewedService /> */}
     <br />
     </div>
   )
