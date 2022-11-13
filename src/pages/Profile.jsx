@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import CreateService from "../components/CreateService";
-import EditPorfile from "../components/EditProfile"
+import EditProfile from "../components/EditProfile"
 import ReviewedService from "../components/ReviewedService"
 import {getUserDetailsService} from "../service/user.services"
 import {getAllServicesService} from "../service/service.services"
@@ -73,7 +73,7 @@ function Profile() {
     <h4>Tu perfil</h4>
 
       <div>
-      <h3>mis perfil</h3>
+      <h3>Mi perfil</h3>
       {userDetails.firstName}
       <br />
       {userDetails.lastName}
@@ -84,13 +84,17 @@ function Profile() {
       {userDetails.city}
       {userDetails.avatar}
       </div>
-
+    <br />
+    <hr />
+    <h3>Crear servicio </h3>
     <CreateService updateList={getDataService}/>
-
-    <EditPorfile />
-
+    <br />
+    <hr />
+    <EditProfile />
+    <br />
+    <hr />
     <ReviewedService />
-    
+    <br />
     </div>
   )
 }
