@@ -21,6 +21,7 @@ function EditService() {
             try {
 
                 const response = await getServiceDetailsService(serviceId)
+                console.log("GETDATA RESPONSE", response)
                 setTitleInput(response.data.title)
                 setTypeServiceInput(response.data.typeService)
                 setDescriptionInput(response.data.description)
@@ -50,6 +51,7 @@ function EditService() {
                 }
 
                 await editServiceService(serviceId, updateService )
+                console.log("SERVICIO ACTUALIZADO", updateService);
 
             } catch (error) {
                 navigate("/error")

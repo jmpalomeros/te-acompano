@@ -3,6 +3,9 @@ import { AuthContext } from "../context/auth.context";
 import CreateService from "../components/CreateService";
 import EditProfile from "../components/EditProfile"
 import CreateReview from "../components/CreateReview"
+import ReviewList from "../components/ReviewList"
+import EditReview from "../components/EditReview";
+
 import {getUserDetailsService} from "../service/user.services"
 import {getAllServicesService} from "../service/service.services"
 import {useNavigate} from "react-router-dom"
@@ -95,10 +98,21 @@ function Profile() {
     <CreateService updateList={getDataService}/>
     <br />
     <hr />
-    <EditService />
+    {/* <EditService /> */}
     <br />
     <hr />
     <h3>Mis reseñas realizadas</h3>
+    <p>aqui irán mis reseñas</p>
+    <ReviewList />
+    <button>Borrar Reseña</button>
+    <EditReview />
+    <button >Editar Reseña</button>
+    
+    
+    
+    
+    
+    <h4>Crear reseña</h4>
     <CreateReview />
     <br />
     <hr />
