@@ -1,7 +1,7 @@
 import service from "./config.services";
 
 const getUserDetailsService = () => {
-    return service.get (`/user`)
+    return service.get ("/user")
 }
 
 const editUserService = (userEdited) => {

@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import {useNavigate} from "react-router-dom"
 import { AuthContext } from "../context/auth.context";
 import {editUserService} from "../service/user.services"
+import {getUserDetailsService} from "../service/user.services"
 
 
 
@@ -13,7 +14,7 @@ function EditProfile() {
   const [ firstNameInput, setFirstNameInput ] = useState("")
   const [ lastNameInput, setLastNameInput ] = useState("")
   const [ emailInput, setEmailInput ] = useState("")
-  const [ passwordInput, setPasswordInput ] = useState("")
+ const [ passwordInput, setPasswordInput ] = useState("")
   const [ avatarInput, setAvatarInput ] = useState("")
   const [ ageInput, setAgeInput ] = useState("")
   const [ cityInput, setCityInput ] = useState("")
@@ -28,7 +29,7 @@ getData()
 
     try {
 
-      const response = await editUserService(user._id)
+      const response = await getUserDetailsService(user._id)
       setFirstNameInput(response.data.firstName)
       setLastNameInput(response.data.lastName)
       setEmailInput(response.data.email)
@@ -38,7 +39,12 @@ getData()
       setCityInput(response.data.city)
 
     } catch (error) {
-      navigate("/error")
+      if(error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data.errorMessage)
+      }
+      else {
+        navigate("/error")
+      }
     }
 
   }
@@ -70,37 +76,42 @@ const updateUser = {
   await editUserService(user._id, updateUser)
 
   } catch (error) {
-    navigate("/error") 
+    if(error.response && error.response.status === 400) {
+      setErrorMessage(error.response.data.errorMessage)
+    }
+    else {
+      navigate("/error")
+    } 
   }
 }
 
   return (
     <div>
 
-<form >
+<form onSubmit={handleUpdate}>
 
-<label>Nombre: </label>
+<label htmlFor='firstName'>Nombre: </label>
 <input type="text" name="firstName" value={firstNameInput} onChange={firstNameChange}/>
 <br />
-<label>Apellidos: </label>
+<label htmlFor='lastName'>Apellidos: </label>
 <input type="text" name="lastName" value={lastNameInput} onChange={lastNameChange}/>
 <br />
-<label>Email: </label>
+<label htmlFor='email'>Email: </label>
 <input type="email" name="email" value={emailInput} onChange={emailChange}/>
 <br />
 <label htmlFor="password">Contraseña: </label>
 <input type="password" name="password" value={passwordInput} onChange={passwordChange}/>
 <br />
-<label>Avatar: </label>
+<label htmlFor='avatar'>Avatar: </label>
 <input type="text" name="avatar" value={avatarInput} onChange={avatarChange}/>
 <br />
-<label>Edad: </label>
+<label htmlFor='age'>Edad: </label>
 <input type="number" name="age" value={ageInput} onChange={ageChange}/>
 <br />
-<label>Ciudad: </label>
+<label htmlFor='city'>Ciudad: </label>
 <input type="text" name="city" value={cityInput} onChange={cityChange}/>
 <br />
-<button  onClick={handleUpdate}>Editar Perfil</button>
+<button>Editar Perfil</button>
 {errorMessage !== "" && <p>{errorMessage}</p> }
 </form>
 

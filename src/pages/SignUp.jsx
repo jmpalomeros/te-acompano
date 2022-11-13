@@ -66,25 +66,25 @@ const handleAvatarChange = (e) => setAvatar(e.target.value)
 
       <form onSubmit={handleSignup}>
 
-      <label>Nombre: </label>
+      <label htmlFor='firstName'>Nombre: </label>
       <input type="text" name="firstName" value={firstName} onChange={handleFirstNameChange}/>
       <br />
-      <label>Apellidos: </label>
+      <label htmlFor='lastName'>Apellidos: </label>
       <input type="text" name="lastName" value={lastName} onChange={handleLastNameChange}/>
       <br />
-      <label>Email: </label>
+      <label htmlFor='email'>Email: </label>
       <input type="email" name="email" value={email} onChange={handleEmailChange}/>
       <br />
       <label htmlFor="password">Contraseña: </label>
       <input type="password" name="password" value={password} onChange={handlePasswordChange}/>
       <br />
-      <label>Avatar: </label>
+      <label htmlFor='avatar '>Avatar: </label>
       <input type="text" name="avatar" value={avatar} onChange={handleAvatarChange}/>
       <br />
-      <label>Edad: </label>
+      <label htmlFor='age'>Edad: </label>
       <input type="number" name="age" value={age} onChange={handleAgeChange}/>
       <br />
-      <label>Ciudad: </label>
+      <label htmlFor='city'>Ciudad: </label>
       <input type="text" name="city" value={city} onChange={handleCityChange}/>
       <br />
       <button type="submit">Registrar</button>
