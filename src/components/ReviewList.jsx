@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getAllReviewsService } from "../service/review.services";
 
 function ReviewList() {
@@ -79,7 +79,8 @@ function ReviewList() {
       {myReviews.map((eachElement) => {
         return (
           <div>
-            <h3>{eachElement.reviewedService.title}</h3>
+            <Link to={`/review/${eachElement._id}`}><h3>{eachElement.reviewedService.title}</h3></Link>
+            
             <p>
               {eachElement.ratedVolunteer.firstName}{" "}
               {eachElement.ratedVolunteer.lastName}

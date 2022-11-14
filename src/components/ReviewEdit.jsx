@@ -5,7 +5,7 @@ import {
   editReviewService,
 } from "../service/review.services";
 
-function EditReview() {
+function ReviewEdit() {
 
   const { reviewId } = useParams()
 
@@ -21,9 +21,10 @@ function EditReview() {
 
   const getEditReview = async () => {
     try {
-      const response = await getReviewDetailsService();
+      const response = await getReviewDetailsService(reviewId);
       setReviewInput(response.data.review);
       setRatingInput(response.data.rating);
+      
     } catch (error) {
       console.log(error);
       navigate("/error");
@@ -32,7 +33,7 @@ function EditReview() {
 
 
   const updateReview = (event) => setReviewInput(event.target.value);
-  const updateRating = (event) => setRatingInput(event.target.rating);
+  const updateRating = (event) => setRatingInput(event.target.value);
 
   const handleUpdateReview = async (event) => {
     event.preventDefault();
@@ -42,9 +43,9 @@ function EditReview() {
         review: reviewInput,
         rating: ratingInput,
       };
-      //!falta incluir id de la review
+      
       await editReviewService(reviewId, updatedReview);
-      navigate("/profile");
+      navigate("/reviews");
     } catch (error) {
       console.log(error);
       navigate("/error");
@@ -58,10 +59,10 @@ function EditReview() {
       <label htmlFor="review">Reseña</label>
       <input type="text" name="review/" value={reviewInput} onChange={updateReview}></input>
       <label htmlFor="rating">Rating</label>
-      <input type="text" name="rating/" value={ratingInput} onChange={updateRating}></input>
+      <input type="number" name="rating/" value={ratingInput} onChange={updateRating}></input>
         <button onClick={handleUpdateReview}>Editar Reseña</button>
     </div>
   );
 }
 
-export default EditReview;
+export default ReviewEdit;
