@@ -1,6 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {getAllServicesService} from "../service/service.services"
+import Search from '../components/Search'
 
 function ServiceList() {
 
@@ -31,11 +32,19 @@ function ServiceList() {
     return <h3>Loading</h3>
   }
 
+  const filterList = (filterQuery)=>{
+    const listadoFiltrado = list.filter((eachElem)=>{
+      return eachElem.title.includes(filterQuery)
+    })
+    setList(listadoFiltrado)
+  }
 
   return (
 
     <div>
     <h3>Lista de servicios ofrecidos</h3>
+
+    <Search list = {filterList}/>
     
     {list.map((eachElement)=>{
       return(
