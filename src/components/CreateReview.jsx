@@ -10,7 +10,7 @@ function CreateReview() {
   const { user } = useContext(AuthContext);
 
   const [reviewInput, setReviewInput] = useState("");
-  const [ratingInput, setRatingInput] = useState("");
+  const [ratingInput, setRatingInput] = useState(0);
 
   const handleReviewChange = (event) => setReviewInput(event.target.value);
   const handleRatingChange = (event) => setRatingInput(event.target.value);
@@ -19,15 +19,17 @@ function CreateReview() {
     event.preventDefault();
 
     const newReview = {
-      reviewAuthor: user._id,
+      // reviewAuthor: user._id,
       reviewedService: serviceId,
-      // ratedVolunteer:    , // entrar en offeredServices del serviceId
+      // // ratedVolunteer:    , // entrar en offeredServices del serviceId
       review: reviewInput,
       rating: ratingInput,
     };
 
     try {
-      await createReviewService(newReview);
+      await createReviewService(serviceId, newReview);
+
+
     } catch (error) {
       console.log(error);
       navigate("/error");

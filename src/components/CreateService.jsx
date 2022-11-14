@@ -1,9 +1,11 @@
 
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 import {createNewServiceService} from "../service/service.services"
 
 function CreateService(props) {
 
+  const navigate = useNavigate()
   const [titleInput, setTitleInput] = useState("")
   const [typeServiceInput, setTypeServiceInput] =useState("")
   const [descriptionInput, setDescriptionInput] = useState("")
@@ -34,7 +36,8 @@ function CreateService(props) {
 
       await createNewServiceService(newService)
       props.updateList()
-
+      navigate("/service-list")
+      
     }catch(error){
       console.log(error)
     }
@@ -59,9 +62,7 @@ function CreateService(props) {
     <label htmlFor="city">Ciudad</label>
     <input type="text" value={cityInput} name="city" onChange={handleCity}/>
     <br />
-    {/* <label htmlFor="offeredServices">Servicio Ofrecido</label>
-    <input type="text" value={offeredServicesInput} name="offeredServices" onChange={handleOfferedServices}/>
-    <br /> */}
+
     
     <button onClick={handleSubmit}>Añadir</button>
     </div>

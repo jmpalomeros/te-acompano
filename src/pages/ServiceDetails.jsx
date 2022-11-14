@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 import{useNavigate, useParams} from "react-router-dom"
+import EditService from '../components/EditService'
 import {getServiceDetailsService} from "../service/service.services"
 
 function ServiceDetails() {
@@ -24,7 +25,7 @@ function ServiceDetails() {
       setIsFetching(false)
 
     }catch(error){
-      //navigate("/error")
+      navigate("/error")
       console.log(" error response",error);
     }
   }
@@ -42,7 +43,9 @@ function ServiceDetails() {
 
     <p>{details.title}</p>
     <p>{details.description}</p>
-    
+    <EditService />
+    <button>Aceptar Servicio</button>
+
     </div>
   )
 }

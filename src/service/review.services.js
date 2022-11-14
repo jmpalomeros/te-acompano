@@ -6,7 +6,6 @@ const getAllReviewsService = () => {
     return service.get("/review")
 }
 //!supongo que esta función será así ya que precisa el serviceId para crear la reseña
-//esta es la ruta que nos da problemas en BE pq no coge el ID del volunteer
 const createReviewService = (serviceId, newReview) =>{
     return service.post(`/review/${serviceId}`, newReview)
 }

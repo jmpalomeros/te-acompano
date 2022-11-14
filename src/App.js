@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import VolunteerDetails from "./pages/VolunteerDetails";
 import Error from "./pages/Error";
 import NotFound from "./pages/NotFound";
+import Reviews from "./pages/Reviews";
 
 function App() {
   return (
@@ -24,9 +25,10 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/service-list" element={<ServiceList />} />
-        <Route path="/service/:id/details" element={<ServiceDetails />} />
+        <Route path="/service/:serviceId" element={<ServiceDetails />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/volunteer/:id/details" element={<VolunteerDetails />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

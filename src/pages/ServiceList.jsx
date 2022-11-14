@@ -40,7 +40,7 @@ function ServiceList() {
     {list.map((eachElement)=>{
       return(
         
-        <Link to={`/service/${eachElement._id}/details`}>
+        <Link to={`/service/${eachElement._id}`}>
         <p key={eachElement._id}>{eachElement.title}</p>
         </Link>
       )
