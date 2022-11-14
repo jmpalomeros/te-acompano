@@ -19,17 +19,13 @@ function CreateReview() {
     event.preventDefault();
 
     const newReview = {
-      // reviewAuthor: user._id,
       reviewedService: serviceId,
-      // // ratedVolunteer:    , // entrar en offeredServices del serviceId
       review: reviewInput,
       rating: ratingInput,
     };
 
     try {
       await createReviewService(serviceId, newReview);
-
-
     } catch (error) {
       console.log(error);
       navigate("/error");

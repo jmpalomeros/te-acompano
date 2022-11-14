@@ -14,7 +14,7 @@ function Reviews() {
       <hr />
       <h4>Solicitudes aceptadas</h4>
       <p>aquí irán las solicitudes aceptadas</p>
-      <CreateReview />
+      
       <br />
       <hr />
       <h3>Mis reseñas recibidas</h3>
