@@ -6,8 +6,8 @@ import ReviewDetails from "../components/ReviewDetails";
 function Reviews() {
   return (
     <div>
-      <h3>Mis reseñas realizadas</h3>
-      <p>aqui irán mis reseñas</p>
+      <h3>Reseñas</h3>
+  
       <ReviewList />
       
       

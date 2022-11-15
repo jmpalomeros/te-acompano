@@ -65,11 +65,17 @@ function ServiceDetails() {
 
       <VolunteerDetails />
 
-      <p></p>
+ 
 
       <hr />
-      <h3>Crear Reseña de este servicio</h3>
+      
+      {details.offeredServices._id !== user.user._id && (
+        <div>
+        <h3>Crear Reseña de este servicio</h3>
       <CreateReview />
+      </div>
+      )}
+
     </div>
   );
 }

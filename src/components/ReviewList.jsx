@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { getAllReviewsService } from "../service/review.services";
+import { AuthContext } from "../context/auth.context";
 
 function ReviewList() {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext)
 
   const [myReviews, setMyReviews] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
@@ -14,7 +16,7 @@ function ReviewList() {
   const getReviewsData = async () => {
     try {
       const response = await getAllReviewsService();
-      console.log("response", response);
+      
       setMyReviews(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -29,22 +31,46 @@ function ReviewList() {
 
   return (
     <div>
+      <h3>Reseñas realizadas</h3>
       {myReviews.map((eachElement) => {
         return (
-          <div>
-            <Link to={`/review/${eachElement._id}`}>
-              <h3>{eachElement.reviewedService.title}</h3>
-            </Link>
-
-            <p>
-              {eachElement.ratedVolunteer.firstName}{" "}
-              {eachElement.ratedVolunteer.lastName}
-            </p>
-            <p>Reseña:{eachElement.review}</p>
-            <p>Valoración:{eachElement.rating}</p>
+          <div key={eachElement._id}>
+            {eachElement.reviewAuthor._id === user.user._id ? (
+              <div>
+              <Link to={`/review/${eachElement._id}`}>
+                <h3>{eachElement.reviewedService.title}</h3>
+              </Link>
+  
+              <p>Voluntario valorado:  {" "}
+                {eachElement.ratedVolunteer.firstName}{" "}
+                {eachElement.ratedVolunteer.lastName}
+              </p>
+              <p>Reseña:{eachElement.review}</p>
+              <p>Valoración:{eachElement.rating}</p>
+              </div>
+            ) :null }
           </div>
         );
       })}
+<hr />
+<h3>Reseñas recibidas</h3>
+      {myReviews.map((eachElement) => {
+        return (
+          <div key={eachElement._id}>
+            {eachElement.ratedVolunteer._id === user.user._id ? (
+              <div>
+              <Link to={`/review/${eachElement._id}`}>
+                <h3>{eachElement.reviewedService.title}</h3>
+              </Link>
+              <p>Reseña:{eachElement.review}</p>
+              <p>Valoración:{eachElement.rating}</p>
+              </div>
+            ) :null }
+          </div>
+        );
+      })}
+
+
     </div>
   );
 }
