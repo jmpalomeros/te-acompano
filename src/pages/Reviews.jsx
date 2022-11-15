@@ -9,7 +9,7 @@ function Reviews() {
       <h3>Mis reseñas realizadas</h3>
       <p>aqui irán mis reseñas</p>
       <ReviewList />
-      <ReviewDetails />
+      
       
             <br />
       <hr />
@@ -19,7 +19,7 @@ function Reviews() {
       <br />
       <hr />
       <h3>Mis reseñas recibidas</h3>
-      {/* <ReviewedService /> */}
+      
       <br />
     </div>
   );

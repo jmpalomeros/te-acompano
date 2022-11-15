@@ -37,7 +37,7 @@ function ReviewDetails() {
       await deleteReviewService(reviewId);
       navigate("/reviews");
     } catch (error) {
-      navigate(error);
+      navigate("/error");
     }
   };
 
