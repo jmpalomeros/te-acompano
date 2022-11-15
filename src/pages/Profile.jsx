@@ -31,7 +31,8 @@ function Profile() {
       setServiceList(allServiceResponse.data);
 
       console.log("service list", serviceList)
-
+      
+      console.log("img", userDetailsResponse.data.avatar)
       setIsFetching(false);
     } catch (error) {
       console.log(error);
@@ -60,8 +61,10 @@ function Profile() {
         {userDetails.email}
         <br />
         {userDetails.age}
+        <br />
         {userDetails.city}
-        {userDetails.avatar}
+        <br />
+        <img src= {userDetails.avatar} alt="avatar" width={150}/>
       </div>
       <br />
       <hr />

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { signupService } from "../service/auth.services"
 import { useNavigate } from "react-router-dom"
+import {uploadImageService} from "../service/upload.services"
 
 function SignUp() {
 
@@ -8,11 +9,12 @@ function SignUp() {
 
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
-  const[firstName, setFirstName] = useState("")
+  const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [age, setAge] = useState("")
   const [city, setCity]= useState("")
   const [avatar, setAvatar] = useState("")
+  const [isFetching, setIsFetching] = useState(false)
 
 
   const [ errorMessage, setErrorMessage ] = useState("")
@@ -24,11 +26,28 @@ const handleFirstNameChange = (e) => setFirstName(e.target.value)
 const handleLastNameChange = (e) => setLastName(e.target.value)
 const handleAgeChange = (e) => setAge(e.target.value)
 const handleCityChange = (e) => setCity(e.target.value)
-const handleAvatarChange = (e) => setAvatar(e.target.value)
 
 
 
+const handleUpdateAvatar = async(event)=> {
+  setIsFetching(true)
+  const sendObj = new FormData()
+  sendObj.append("avatar", event.target.files[0] )
 
+  try {
+    
+    const response = await uploadImageService(sendObj)
+    console.log("foto", response.data.avatar)
+    setAvatar(response.data.avatar)
+    setIsFetching(false)
+  } catch (error) {
+    console.log("error", error)
+    navigate("/error")
+    
+  }
+
+
+}
 
   const handleSignup = async (e) => {
     e.preventDefault()
@@ -42,7 +61,7 @@ const handleAvatarChange = (e) => setAvatar(e.target.value)
       city: city, 
       avatar: avatar
     }
-
+    console.log("usuario creado",newUser);
     try {
       
       await signupService(newUser)
@@ -58,7 +77,7 @@ const handleAvatarChange = (e) => setAvatar(e.target.value)
     }
   } 
 
-
+  
 
   return (
     <div>
@@ -78,8 +97,8 @@ const handleAvatarChange = (e) => setAvatar(e.target.value)
       <label htmlFor="password">Contraseña: </label>
       <input type="password" name="password" value={password} onChange={handlePasswordChange}/>
       <br />
-      <label htmlFor='avatar '>Avatar: </label>
-      <input type="text" name="avatar" value={avatar} onChange={handleAvatarChange}/>
+      <label htmlFor='avatar'> Avatar: </label>
+      <input type="file" name="avatar" onChange={handleUpdateAvatar}/>
       <br />
       <label htmlFor='age'>Edad: </label>
       <input type="number" name="age" value={age} onChange={handleAgeChange}/>
@@ -90,10 +109,6 @@ const handleAvatarChange = (e) => setAvatar(e.target.value)
       <button type="submit">Registrar</button>
       {errorMessage !== "" && <p>{errorMessage}</p> }
       </form>
-
-
-
-
 
 
     </div>
