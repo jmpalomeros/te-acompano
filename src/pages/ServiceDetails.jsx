@@ -24,6 +24,8 @@ function ServiceDetails() {
   const getDetailsData = async () => {
     try {
       const response = await getServiceDetailsService(serviceId);
+      console.log("detalles servicio", response.data.offeredServices._id)
+      console.log("usuario",user.user._id);
       setDetails(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -53,9 +55,9 @@ function ServiceDetails() {
       <p>{details.title}</p>
       <p>{details.description}</p>
       <EditService />
-      {details.offeredServices.id !== user._id ? (
+      {details.offeredServices._id !== user.user._id && (
         <button onClick={handleUpdate}>Aceptar Servicio</button>
-      ) : null}
+      )}
       <hr />
       <h3>Reseñas del voluntario del servicio</h3>
       <Link to={`/volunteer/${details.offeredServices._id}/details`}>
