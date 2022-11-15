@@ -7,11 +7,13 @@ function EditService() {
 
     const navigate = useNavigate()
     const { serviceId } = useParams()
+    const {user} = useContext(AuthContext)
 
     const [ titleInput, setTitleInput ] = useState("")
     const [ typeServiceInput, setTypeServiceInput ] = useState("")
     const [ descriptionInput, setDescriptionInput ] = useState("")
     const [ cityInput, setCityInput ] = useState("")
+    const [offeredServices, setOfferedServices] = useState("")
 
     useEffect(() => {
         getDataService()
@@ -26,6 +28,7 @@ function EditService() {
                 setTypeServiceInput(response.data.typeService)
                 setDescriptionInput(response.data.description)
                 setCityInput(response.data.city)
+                setOfferedServices(response.data.offeredServices)
 
                 
             } catch (error) {
@@ -94,11 +97,12 @@ function EditService() {
           onChange={cityChange}
         />
         <br />
-        {/* <label htmlFor="offeredServices">Servicio Ofrecido</label>
-<input type="text" value={offeredServicesInput} name="offeredServices" onChange={handleOfferedServices}/>
-<br /> */}
-
+        
+        {user.user._id === offeredServices._id ? 
         <button onClick={handleUpdate}>Editar Servicio</button>
+        : null}
+        
+        
       </div>
     </div>
   );
