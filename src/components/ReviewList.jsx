@@ -30,49 +30,7 @@ function ReviewList() {
   if (isFetching === true) {
     return <h3>Loading</h3>;
   }
-  // //!falta incluir id de la review
-  // const getEditReview = async () => {
-  //   try {
-  //     const response = await getReviewDetailsService();
-  //     setReviewInput(response.data.review);
-  //     setRatingInput(response.data.rating);
-  //   } catch (error) {
-  //     console.log(error);
-  //     navigate("/error");
-  //   }
-  // };
-
-  // const updateReview = (event) => setReviewInput(event.target.value);
-  // const updateRating = (event) => setRatingInput(event.target.rating);
-
-  // const handleUpdateReview = async (event) => {
-  //   event.preventDefault();
-
-  //   try {
-  //     const updatedReview = {
-  //       review: reviewInput,
-  //       rating: ratingInput,
-  //     };
-  //     //!falta incluir id de la review
-  //     await editReviewService(updatedReview);
-  //     setShowFormEditReview(true);
-  //     navigate("/profile");
-  //   } catch (error) {
-  //     console.log(error);
-  //     navigate("/error");
-  //   }
-  // };
-
-  //!falta incluir id de la review y el onClick en el boton
-  // const handleDelete = async() =>{
-  //     try{
-
-  //         await deleteReviewService()
-
-  //     }catch(error){
-  //         navigate(error)
-  //     }
-  // }
+ 
 
   return (
     <div>
