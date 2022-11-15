@@ -1,9 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import CreateService from "../components/CreateService";
 import EditProfile from "../components/EditProfile";
-
 
 import { getUserDetailsService } from "../service/user.services";
 import { getAllServicesService } from "../service/service.services";
@@ -30,6 +29,8 @@ function Profile() {
 
       const allServiceResponse = await getAllServicesService();
       setServiceList(allServiceResponse.data);
+
+      console.log("service list", serviceList)
 
       setIsFetching(false);
     } catch (error) {
@@ -72,10 +73,46 @@ function Profile() {
       <CreateService updateList={getData} />
       <br />
       <hr />
-     <h3><Link to="/reviews">Ver Reseñas</Link></h3>
-     
+      <h3>Servicios que he aceptado</h3>
+      {serviceList.map((eachElement) => {
+        return (
+          <div key={eachElement._id}>
+            {eachElement.acceptedServices === user.user._id ? (
+              <div>
+                <h3>{eachElement.title}</h3>
+                <p>Tipo de servicio:{eachElement.typeService}</p>
+                <p>Descripción:{eachElement.description}</p>
+                <p>Ciudad:{eachElement.city}</p>
+                {/* <p>Voluntario:{eachElement.acceptedServices._id.firstName}</p> */}
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
+      <hr />
+      <h3>Servicios ofrecidos</h3>
+      {serviceList.map((eachElement) => {
+        return (
+          <div key={eachElement._id}>
+            {eachElement.offeredServices === user.user._id ? (
+              <div>
+                <Link to={`/service/${eachElement._id}`}>
+                  <h3>{eachElement.title}</h3>
+                </Link>
+                <p>Tipo de servicio:{eachElement.typeService}</p>
+                <p>Descripción:{eachElement.description}</p>
+                <p>Ciudad:{eachElement.city}</p>
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
 
-      
+      <hr />
+
+      <h3>
+        <Link to="/reviews">Ver Reseñas</Link>
+      </h3>
     </div>
   );
 }

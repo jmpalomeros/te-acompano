@@ -7,19 +7,14 @@ function Reviews() {
   return (
     <div>
       <h3>Reseñas</h3>
-  
+
       <ReviewList />
-      
-      
-            <br />
+
+      <br />
       <hr />
       <h4>Solicitudes aceptadas</h4>
       <p>aquí irán las solicitudes aceptadas</p>
-      
-      <br />
-      <hr />
-      <h3>Mis reseñas recibidas</h3>
-      
+
       <br />
     </div>
   );
