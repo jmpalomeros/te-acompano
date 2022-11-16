@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllReviewsService } from "../service/review.services";
+import { getAllReviewsService, getReviewDetailsService } from "../service/review.services";
 
 function VolunteerDetails() {
   const navigate = useNavigate();
   const { volunteerId } = useParams();
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
 
   const [allDetails, setAllDetails] = useState([]);
 
@@ -15,11 +15,13 @@ function VolunteerDetails() {
 
   const getAllDetailsData = async () => {
     try {
-      const response = await getAllReviewsService(volunteerId);
+      const response = await getAllReviewsService();
+      console.log("volunteerId", volunteerId)
+      console.log("response.data", response.data);
       setAllDetails(response.data);
       setIsFetching(false);
     } catch (error) {
-      navigate(error);
+      navigate("/error");
     }
   };
 
@@ -31,7 +33,7 @@ function VolunteerDetails() {
     <div>
       {allDetails.map((eachItem) => {
         return (
-          <div>
+          <div key={eachItem._id}>
             <h3>{eachItem.reviewedService.title}</h3>
             <p>{eachItem.review}</p>
             <p>{eachItem.rating}</p>

@@ -24,7 +24,7 @@ function NavBar() {
 
           <NavLink to="/profile">Mi perfil</NavLink>
 
-          <NavLink onClick={handleLogout}>Log Out</NavLink>
+          <button onClick={handleLogout}>Log Out</button>
         </div>
       ) : (
         <div>

@@ -30,7 +30,7 @@ function App() {
         <Route path="/service-list" element={<IsPrivate> <ServiceList /> </IsPrivate>} />
         <Route path="/service/:serviceId" element={<IsPrivate> <ServiceDetails /> </IsPrivate>} />
         <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
-        <Route path="/volunteer/:id/details" element={<IsPrivate> <VolunteerDetails /></IsPrivate>} />
+        <Route path="/volunteer/:volunteerId/details" element={<IsPrivate> <VolunteerDetails /> </IsPrivate>} />
         <Route path="/reviews" element={<IsPrivate> <Reviews /> </IsPrivate>} />
         <Route path="/review/:reviewId" element={<IsPrivate> <ReviewDetails/> </IsPrivate>}/>
 
