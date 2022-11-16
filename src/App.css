@@ -11,3 +11,11 @@
   color: white !important;
 }
 
+#spinner{
+  display:flex;
+  justify-content: center;
+  margin-top:50%
+}
+
+
+

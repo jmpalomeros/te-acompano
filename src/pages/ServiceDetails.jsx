@@ -6,8 +6,7 @@ import { getServiceDetailsService } from "../service/service.services";
 import VolunteerDetails from "./VolunteerDetails";
 import { acceptServiceService } from "../service/service.services";
 import { AuthContext } from "../context/auth.context";
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
+import Accordion from "react-bootstrap/Accordion";
 
 function ServiceDetails() {
   const navigate = useNavigate();
@@ -18,8 +17,6 @@ function ServiceDetails() {
   const [details, setDetails] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
   const [acceptedServiceInput, setAcceptedServiceInput] = useState({});
-
-  const [formIsShowing, setFormIsShowing] = useState(false);
 
   useEffect(() => {
     getDetailsData();
@@ -53,52 +50,51 @@ function ServiceDetails() {
     }
   };
 
-  const toggleForm = () => {
-    console.log("camiando el formulario");
-    if (formIsShowing === true) {
-      setFormIsShowing(false);
-    } else {
-      setFormIsShowing(true);
-    }
-  };
-
-
- 
   return (
     <div>
-      <h3>Detalles del servicio</h3>
-      <p>Título: {details.title}</p>
-      <p>Descripción:{details.description}</p>
+      <Accordion defaultActiveKey={["0"]} alwaysOpen>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            <h3>Detalles del servicio</h3>
+          </Accordion.Header>
+          <Accordion.Body>
+            <p>Título: {details.title}</p>
+            <p>Descripción:{details.description}</p>
+            <EditService />
 
-      <EditService />
+            {details.offeredServices._id !== user.user._id && (
+              <button onClick={handleUpdate}>Aceptar Servicio</button>
+            )}
+          </Accordion.Body>
+        </Accordion.Item>
 
-      {details.offeredServices._id !== user.user._id && (
-        <button onClick={handleUpdate}>Aceptar Servicio</button>
-      )}
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>
+            <h3>Reseñas sobre el voluntario de este servicio</h3>
+          </Accordion.Header>
+          <Accordion.Body>
+            <Link to={`/volunteer/${details.offeredServices._id}/details`}>
+              {details.offeredServices.firstName}{" "}
+              {details.offeredServices.lastName}
+            </Link>
 
-      <hr />
-      <h3>Reseñas del voluntario del servicio</h3>
-      <Link to={`/volunteer/${details.offeredServices._id}/details`}>
-        {details.offeredServices.firstName} {details.offeredServices.lastName}
-      </Link>
+            <VolunteerDetails />
+          </Accordion.Body>
+        </Accordion.Item>
 
-      <VolunteerDetails />
-
-      <hr />
-      
-      <Button variant="outline-info" onClick={toggleForm}>Ver formulario</Button>
-      {details.offeredServices._id !== user.user._id && (
-        <div>
-          <h3>Crear Reseña de este servicio</h3>
-          
-          <Collapse in={formIsShowing}>
-          <div>
-          <CreateReview />
-          </div>
-          </Collapse>
-        </div>
-      )}
-      
+        <Accordion.Item eventKey="2">
+          {details.offeredServices._id !== user.user._id && (
+            <div>
+              <Accordion.Header>
+                <h3>Crear Reseña de este servicio</h3>
+              </Accordion.Header>
+              <Accordion.Body>
+                <CreateReview />
+              </Accordion.Body>
+            </div>
+          )}
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 }

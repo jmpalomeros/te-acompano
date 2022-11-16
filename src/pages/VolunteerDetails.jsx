@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllReviewsService, getReviewDetailsService } from "../service/review.services";
 
 function VolunteerDetails() {
@@ -45,6 +45,8 @@ function VolunteerDetails() {
         </div>
         );
       })}
+
+      <Link to={"/profile"}> <button>Volver al perfil</button> </Link>
     </div>
   );
 }

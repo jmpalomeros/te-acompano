@@ -7,7 +7,8 @@ import EditProfile from "../components/EditProfile";
 import { getUserDetailsService } from "../service/user.services";
 import { getAllServicesService } from "../service/service.services";
 import { useNavigate } from "react-router-dom";
-import EditService from "../components/EditService";
+
+import Accordion from "react-bootstrap/Accordion";
 
 function Profile() {
   const { authenticaUser, user } = useContext(AuthContext);
@@ -30,9 +31,9 @@ function Profile() {
       const allServiceResponse = await getAllServicesService();
       setServiceList(allServiceResponse.data);
 
-      console.log("service list", serviceList)
-      
-      console.log("img", userDetailsResponse.data.avatar)
+      console.log("service list", serviceList);
+
+      console.log("img", userDetailsResponse.data.avatar);
       setIsFetching(false);
     } catch (error) {
       console.log(error);
@@ -64,28 +65,40 @@ function Profile() {
         <br />
         {userDetails.city}
         <br />
-        <img src= {userDetails.avatar} alt="avatar" width={150}/>
+        <img src={userDetails.avatar} alt="avatar" width={150} />
       </div>
       <br />
       <hr />
-      <h3>Editar Perfil</h3>
-      <EditProfile updateProfile={getData} />
-      <br />
-      <hr />
-      <h3>Crear servicio </h3>
-      <CreateService updateList={getData} />
-      <br />
-      <hr />
+
+      <Accordion defaultActiveKey={["0"]} alwaysOpen>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>
+            <h3>Editar Perfil</h3>
+          </Accordion.Header>
+          <Accordion.Body>
+            <EditProfile updateProfile={getData} />
+          </Accordion.Body>
+        </Accordion.Item>
+        <Accordion.Item eventKey="1">
+          <Accordion.Header>
+            <h3>Crear servicio </h3>
+          </Accordion.Header>
+          <Accordion.Body>
+            <CreateService updateList={getData} />
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+
       <h3>Servicios que he aceptado</h3>
       {serviceList.map((eachElement) => {
         return (
           <div key={eachElement._id}>
             {eachElement.acceptedServices === user.user._id ? (
               <div>
-              <Link to={`/service/${eachElement._id}`}>
-                <h3>{eachElement.title}</h3>
-              </Link>
-                
+                <Link to={`/service/${eachElement._id}`}>
+                  <h3>{eachElement.title}</h3>
+                </Link>
+
                 <p>Tipo de servicio:{eachElement.typeService}</p>
                 <p>Descripción:{eachElement.description}</p>
                 <p>Ciudad:{eachElement.city}</p>
