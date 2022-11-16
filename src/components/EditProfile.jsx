@@ -70,10 +70,8 @@ function EditProfile(props) {
     try {
       const response = await uploadImageService(sendObj);
       setAvatarInput(response.data.avatar)
-      console.log(response.data.avatar);
       setIsFetching(false);
     } catch (error) {
-      console.log("error", error);
       navigate("/error");
     }
   };
@@ -101,7 +99,7 @@ function EditProfile(props) {
           onChange={lastNameChange}
         />
         <br />
-        <label>Avatar: </label>
+        <label >Avatar: </label>
         <input
           type="file"
           name="avatar"

@@ -45,7 +45,7 @@ function ServiceList() {
 
       {list.map((eachElement) => {
         return (
-          <div>
+          <div key={eachElement._id}>
             {eachElement.acceptedServices === undefined ? (
               <Link to={`/service/${eachElement._id}`}>
                 <p key={eachElement._id}>{eachElement.title}</p>

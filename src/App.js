@@ -13,6 +13,7 @@ import Error from "./pages/Error";
 import NotFound from "./pages/NotFound";
 import Reviews from "./pages/Reviews";
 import ReviewDetails from "./components/ReviewDetails";
+import IsPrivate from "./components/IsPrivate"
 
 function App() {
   return (
@@ -25,12 +26,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/service-list" element={<ServiceList />} />
-        <Route path="/service/:serviceId" element={<ServiceDetails />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/volunteer/:id/details" element={<VolunteerDetails />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/review/:reviewId" element={<ReviewDetails/>}/>
+
+        <Route path="/service-list" element={<IsPrivate> <ServiceList /> </IsPrivate>} />
+        <Route path="/service/:serviceId" element={<IsPrivate> <ServiceDetails /> </IsPrivate>} />
+        <Route path="/profile" element={<IsPrivate> <Profile /> </IsPrivate>} />
+        <Route path="/volunteer/:id/details" element={<IsPrivate> <VolunteerDetails /></IsPrivate>} />
+        <Route path="/reviews" element={<IsPrivate> <Reviews /> </IsPrivate>} />
+        <Route path="/review/:reviewId" element={<IsPrivate> <ReviewDetails/> </IsPrivate>}/>
+
         <Route path="/error" element={<Error />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
