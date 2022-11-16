@@ -26,9 +26,8 @@ function CreateReview() {
 
     try {
       await createReviewService(serviceId, newReview);
-      console.log("serviceId", serviceId)
-      console.log("newReview", newReview)
-
+      console.log("serviceId", serviceId);
+      console.log("newReview", newReview);
     } catch (error) {
       console.log(error);
       navigate("/error");

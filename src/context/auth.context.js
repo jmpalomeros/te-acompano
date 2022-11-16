@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { verifyService } from "../service/auth.services";
-//importar los spinners aqui
+
+import PuffLoader from "react-spinners/PuffLoader";
 
 const AuthContext = createContext();
 
@@ -40,7 +41,13 @@ function AuthWrapper(props) {
   };
 
   if (isFetching === true) {
-    return <div>Validando usuario</div>;
+    return (
+      <div id="spinner">
+      
+      <PuffLoader color={"blue"} size={50}/>
+      
+      </div>
+      )
   }
 
   return (
