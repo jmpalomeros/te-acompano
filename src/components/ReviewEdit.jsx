@@ -12,6 +12,7 @@ function ReviewEdit() {
   const navigate = useNavigate()
   const [reviewInput, setReviewInput] = useState("");
   const [ratingInput, setRatingInput] = useState("");
+  const [isFetching, setIsFetching] = useState(false);
 
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function ReviewEdit() {
       const response = await getReviewDetailsService(reviewId);
       setReviewInput(response.data.review);
       setRatingInput(response.data.rating);
+      setIsFetching(true)
       
     } catch (error) {
       console.log(error);
@@ -45,6 +47,7 @@ function ReviewEdit() {
       };
       
       await editReviewService(reviewId, updatedReview);
+      setIsFetching(false)
       navigate("/reviews");
     } catch (error) {
       console.log(error);
@@ -52,7 +55,9 @@ function ReviewEdit() {
     }
   };
 
-
+  if (isFetching === true) {
+    return <h3>Loading</h3>;
+  }
 
   return (
     <div>

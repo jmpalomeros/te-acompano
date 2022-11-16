@@ -48,6 +48,10 @@ function ServiceDetails() {
       navigate("/error");
     }
   };
+
+
+
+  
   return (
     <div>
       <h3>Detalles del servicio</h3>

@@ -34,6 +34,7 @@ function ServiceList() {
       return eachElem.title.includes(filterQuery);
     });
     setList(listadoFiltrado);
+   
   };
 
   return (

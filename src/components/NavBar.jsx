@@ -1,17 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
-  const { authenticaUser, isLoggedIn} = useContext(AuthContext);
+  const { authenticaUser, isLoggedIn } = useContext(AuthContext);
 
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticaUser();
-    navigate("/")
+    navigate("/");
   };
 
   return (

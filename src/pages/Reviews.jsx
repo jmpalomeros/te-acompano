@@ -1,7 +1,6 @@
 //import CreateReview from "../components/CreateReview";
 import ReviewList from "../components/ReviewList";
 
-import ReviewDetails from "../components/ReviewDetails";
 
 function Reviews() {
   return (

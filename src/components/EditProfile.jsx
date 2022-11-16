@@ -1,7 +1,10 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { editUserService, getUserDetailsService } from "../service/user.services";
-import {uploadImageService} from "../service/upload.services"
+import {
+  editUserService,
+  getUserDetailsService,
+} from "../service/user.services";
+import { uploadImageService } from "../service/upload.services";
 
 function EditProfile(props) {
   const navigate = useNavigate();
@@ -11,23 +14,24 @@ function EditProfile(props) {
   const [avatarInput, setAvatarInput] = useState("");
   const [ageInput, setAgeInput] = useState(0);
   const [cityInput, setCityInput] = useState("");
-  
+  const [isFetching, setIsFetching] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-     getData();
+    getData();
   }, []);
 
   const getData = async () => {
     try {
       const response = await getUserDetailsService();
-      console.log("USER DETAILS", response.data)
+      console.log("USER DETAILS", response.data);
       setFirstNameInput(response.data.firstName);
       setLastNameInput(response.data.lastName);
-      //setAvatarInput(response.data.avatar);
+      setAvatarInput(response.data.avatar);
       setAgeInput(response.data.age);
       setCityInput(response.data.city);
+    
     } catch (error) {
       navigate("/error");
     }
@@ -35,7 +39,6 @@ function EditProfile(props) {
 
   const firstNameChange = (event) => setFirstNameInput(event.target.value);
   const lastNameChange = (event) => setLastNameInput(event.target.value);
-  //const avatarChange = (event) => setAvatarInput(event.target.value);
   const ageChange = (event) => setAgeInput(event.target.value);
   const cityChange = (event) => setCityInput(event.target.value);
 
@@ -46,36 +49,37 @@ function EditProfile(props) {
       const updateUser = {
         firstName: firstNameInput,
         lastName: lastNameInput,
-        //avatar: avatarInput,
+        avatar: avatarInput,
         age: ageInput,
         city: cityInput,
       };
 
       await editUserService(updateUser);
-      props.updateProfile()
-
+      props.updateProfile();
+      setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
 
-  const handleUpdateAvatar = async(event)=> {
-
-    const sendObj = new FormData()
-    sendObj.append("avatar", event.target.files[0] )
+  const handleUpdateAvatar = async (event) => {
+    setIsFetching(true);
+    const sendObj = new FormData();
+    sendObj.append("avatar", event.target.files[0]);
 
     try {
-      
-      const response = await uploadImageService(sendObj)
+      const response = await uploadImageService(sendObj);
+      setAvatarInput(response.data.avatar)
       console.log(response.data.avatar);
-      
+      setIsFetching(false);
     } catch (error) {
-      console.log("error", error)
-      navigate("/error")
-      
+      console.log("error", error);
+      navigate("/error");
     }
+  };
 
-
+  if (isFetching === true) {
+    return <h3>Loading</h3>;
   }
 
   return (
@@ -96,14 +100,14 @@ function EditProfile(props) {
           value={lastNameInput}
           onChange={lastNameChange}
         />
-        {/* <br />
+        <br />
         <label>Avatar: </label>
         <input
           type="file"
           name="avatar"
-          value={avatarInput}
+          // value={}
           onChange={handleUpdateAvatar}
-        /> */}
+        />
         <br />
         <label>Edad: </label>
         <input type="number" name="age" value={ageInput} onChange={ageChange} />
@@ -116,7 +120,7 @@ function EditProfile(props) {
           onChange={cityChange}
         />
         <br />
-        <button onClick={handleUpdate}>Editar Perfil</button>
+        <button onClick={handleUpdate}>Actualizar Perfil</button>
         {errorMessage !== "" && <p>{errorMessage}</p>}
       </form>
     </div>
