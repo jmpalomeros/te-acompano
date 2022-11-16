@@ -5,6 +5,8 @@ import {
   getUserDetailsService,
 } from "../service/user.services";
 import { uploadImageService } from "../service/upload.services";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function EditProfile(props) {
   const navigate = useNavigate();
@@ -31,7 +33,6 @@ function EditProfile(props) {
       setAvatarInput(response.data.avatar);
       setAgeInput(response.data.age);
       setCityInput(response.data.city);
-    
     } catch (error) {
       navigate("/error");
     }
@@ -69,7 +70,7 @@ function EditProfile(props) {
 
     try {
       const response = await uploadImageService(sendObj);
-      setAvatarInput(response.data.avatar)
+      setAvatarInput(response.data.avatar);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -82,45 +83,67 @@ function EditProfile(props) {
 
   return (
     <div>
-      <form>
-        <label>Nombre: </label>
-        <input
-          type="text"
-          name="firstName"
-          value={firstNameInput}
-          onChange={firstNameChange}
-        />
-        <br />
-        <label>Apellidos: </label>
-        <input
-          type="text"
-          name="lastName"
-          value={lastNameInput}
-          onChange={lastNameChange}
-        />
-        <br />
-        <label >Avatar: </label>
-        <input
-          type="file"
-          name="avatar"
-          // value={}
-          onChange={handleUpdateAvatar}
-        />
-        <br />
-        <label>Edad: </label>
-        <input type="number" name="age" value={ageInput} onChange={ageChange} />
-        <br />
-        <label>Ciudad: </label>
-        <input
-          type="text"
-          name="city"
-          value={cityInput}
-          onChange={cityChange}
-        />
-        <br />
-        <button onClick={handleUpdate}>Actualizar Perfil</button>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Nombre</Form.Label>
+          <Form.Control
+            type="text"
+            name="firstName"
+            value={firstNameInput}
+            onChange={firstNameChange}
+            placeholder="Escribe tu nombre"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Apellidos</Form.Label>
+          <Form.Control
+            type="text"
+            name="lastName"
+            value={lastNameInput}
+            onChange={lastNameChange}
+            placeholder="Escribe tus apellidos"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Imagen</Form.Label>
+          <Form.Control
+            type="file"
+            name="avatar"
+            onChange={handleUpdateAvatar}
+            placeholder="Selecciona una imagen"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Edad</Form.Label>
+          <Form.Control
+            type="number"
+            name="age"
+            value={ageInput}
+            onChange={ageChange}
+            placeholder="Escribe tu edad"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Ciudad</Form.Label>
+          <Form.Control
+            type="text"
+            name="city"
+            value={cityInput}
+            onChange={cityChange}
+            placeholder="Escribe el nombre de tu ciudad"
+          />
+        </Form.Group>
+
+        <Button onClick={handleUpdate} variant="primary" type="submit">
+          Actualizar Perfil
+        </Button>
+
         {errorMessage !== "" && <p>{errorMessage}</p>}
-      </form>
+      </Form>
     </div>
   );
 }

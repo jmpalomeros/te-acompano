@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewServiceService } from "../service/service.services";
 
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+
 function CreateService(props) {
   const navigate = useNavigate();
   const [titleInput, setTitleInput] = useState("");
@@ -9,12 +12,10 @@ function CreateService(props) {
   const [descriptionInput, setDescriptionInput] = useState("");
   const [cityInput, setCityInput] = useState("");
 
-
   const handleTitle = (event) => setTitleInput(event.target.value);
   const handleTypeService = (event) => setTypeServiceInput(event.target.value);
   const handleDescription = (event) => setDescriptionInput(event.target.value);
   const handleCity = (event) => setCityInput(event.target.value);
-  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,13 +25,12 @@ function CreateService(props) {
       typeService: typeServiceInput,
       description: descriptionInput,
       city: cityInput,
-   
     };
 
     try {
       await createNewServiceService(newService);
       props.updateList();
-      console.log("new service", newService)
+      console.log("new service", newService);
       navigate("/service-list");
     } catch (error) {
       console.log(error);
@@ -39,56 +39,56 @@ function CreateService(props) {
 
   return (
     <div>
-      <div>
-        <label htmlFor="title">Titulo</label>
-        <input
-          type="text"
-          value={titleInput}
-          name="title"
-          onChange={handleTitle}
-        />
-        <br />
-        <label htmlFor="typeService">
-        
-          Tipo de Servicio
-          </label>
-          {/* {typeServiceInput.map((eachElement)=>{
-            return(
-              <select name="typeService" onChange={handleTypeService}>
-              <option value={eachElement.enum}></option>
-              </select>
-            )
-                        
-          })} */}
-            <select name="typeService" onChange={handleTypeService}>
-            <option value="">Elige una opción</option>
-            <option value="Ocio">Ocio</option>
-            <option value="Ayuda">Ayuda</option>
-            <option value="Otros">Otros</option>
-            </select>
-        
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="title">Título</Form.Label>
+          <Form.Control
+            type="text"
+            value={titleInput}
+            name="title"
+            onChange={handleTitle}
+            placeholder="Escribe un título"
+          />
+        </Form.Group>
 
-        {/* <input type="text" name="typeService" value={typeServiceInput} onChange={handleTypeService} /> */}
-        <br />
-        <label htmlFor="description">Descripción del servicio</label>
-        <input
-          type="text"
-          value={descriptionInput}
-          name="description"
-          onChange={handleDescription}
-        />
-        <br />
-        <label htmlFor="city">Ciudad</label>
-        <input
-          type="text"
-          value={cityInput}
-          name="city"
-          onChange={handleCity}
-        />
-        <br />
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label htmlFor="typeService">Tipo de Servicio</Form.Label>
+        </Form.Group>
+        <Form.Select name="typeService" onChange={handleTypeService}>
+          <option>Elige una opción</option>
+          <option value="Ocio">Ocio</option>
+          <option value="Ayuda">Ayuda</option>
+          <option value="Otros">Otros</option>
+        </Form.Select>
 
-        <button onClick={handleSubmit}>Añadir</button>
-      </div>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="description">
+            Descripción del servicio
+          </Form.Label>
+          <Form.Control
+            type="text"
+            value={descriptionInput}
+            name="description"
+            onChange={handleDescription}
+            placeholder="Danos alguos detalles de lo que quieres hacer"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label htmlFor="city">Ciudad</Form.Label>
+          <Form.Control
+            type="text"
+            value={cityInput}
+            name="city"
+            onChange={handleCity}
+            placeholder="Escribe el nombre de tu ciudad"
+          />
+        </Form.Group>
+
+        <Button onClick={handleSubmit} variant="primary" type="submit">
+          Añadir
+        </Button>
+      </Form>
     </div>
   );
 }

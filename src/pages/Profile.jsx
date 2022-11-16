@@ -9,6 +9,9 @@ import { getAllServicesService } from "../service/service.services";
 import { useNavigate } from "react-router-dom";
 
 import Accordion from "react-bootstrap/Accordion";
+//import Figure from 'react-bootstrap/Figure';
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 function Profile() {
   const { authenticaUser, user } = useContext(AuthContext);
@@ -51,10 +54,38 @@ function Profile() {
 
   return (
     <div>
-      <h4>Tu perfil</h4>
 
-      <div>
-        <h3>Mi perfil</h3>
+    {/* <Figure>
+      <Figure.Image
+        width={150}
+        height={180}
+        src={userDetails.avatar} 
+        alt="avatar"
+      />
+      <Figure.Caption>
+        Nulla vitae elit libero, a pharetra augue mollis interdum.
+      </Figure.Caption>
+    </Figure> */}
+  
+      
+      <Card style={{ width: "100%" }}>
+      <Card.Img variant="top" src={userDetails.avatar} alt="avatar" style={{ width: 300 }} />
+      
+      <Card.Body>
+        <Card.Title>Mi perfil</Card.Title>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item>Nombre: {userDetails.firstName}</ListGroup.Item>
+        <ListGroup.Item>Apellidos: {userDetails.lastName}</ListGroup.Item>
+        <ListGroup.Item>Email: {userDetails.email}</ListGroup.Item>
+        <ListGroup.Item>Edad: {userDetails.age}</ListGroup.Item>
+        <ListGroup.Item>Ciudad: {userDetails.city}</ListGroup.Item>
+      </ListGroup>
+      
+      </Card>
+
+      {/* <div>
+        <h4>Mi perfil</h4>
         {userDetails.firstName}
         <br />
         {userDetails.lastName}
@@ -68,12 +99,12 @@ function Profile() {
         <img src={userDetails.avatar} alt="avatar" width={150} />
       </div>
       <br />
-      <hr />
+      <hr /> */}
 
       <Accordion defaultActiveKey={["0"]} alwaysOpen>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <h3>Editar Perfil</h3>
+            <h4>Editar Perfil</h4>
           </Accordion.Header>
           <Accordion.Body>
             <EditProfile updateProfile={getData} />
@@ -81,7 +112,7 @@ function Profile() {
         </Accordion.Item>
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            <h3>Crear servicio </h3>
+            <h4>Crear servicio </h4>
           </Accordion.Header>
           <Accordion.Body>
             <CreateService updateList={getData} />
@@ -89,14 +120,14 @@ function Profile() {
         </Accordion.Item>
       </Accordion>
 
-      <h3>Servicios que he aceptado</h3>
+      <h4>Servicios que he aceptado</h4>
       {serviceList.map((eachElement) => {
         return (
           <div key={eachElement._id}>
             {eachElement.acceptedServices === user.user._id ? (
               <div>
                 <Link to={`/service/${eachElement._id}`}>
-                  <h3>{eachElement.title}</h3>
+                  <h4>{eachElement.title}</h4>
                 </Link>
 
                 <p>Tipo de servicio:{eachElement.typeService}</p>
@@ -109,14 +140,14 @@ function Profile() {
         );
       })}
       <hr />
-      <h3>Servicios ofrecidos</h3>
+      <h4>Servicios ofrecidos</h4>
       {serviceList.map((eachElement) => {
         return (
           <div key={eachElement._id}>
             {eachElement.offeredServices === user.user._id ? (
               <div>
                 <Link to={`/service/${eachElement._id}`}>
-                  <h3>{eachElement.title}</h3>
+                  <h4>{eachElement.title}</h4>
                 </Link>
                 <p>Tipo de servicio:{eachElement.typeService}</p>
                 <p>Descripción:{eachElement.description}</p>
@@ -129,9 +160,9 @@ function Profile() {
 
       <hr />
 
-      <h3>
+      <h4>
         <Link to="/reviews">Ver Reseñas</Link>
-      </h3>
+      </h4>
     </div>
   );
 }
