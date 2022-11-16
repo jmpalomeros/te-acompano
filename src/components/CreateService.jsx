@@ -30,6 +30,7 @@ function CreateService(props) {
     try {
       await createNewServiceService(newService);
       props.updateList();
+      console.log("new service", newService)
       navigate("/service-list");
     } catch (error) {
       console.log(error);
@@ -48,13 +49,26 @@ function CreateService(props) {
         />
         <br />
         <label htmlFor="typeService">
+        
           Tipo de Servicio
-          <select name="typeService" onChange={handleTypeService}>
+          </label>
+          {/* {typeServiceInput.map((eachElement)=>{
+            return(
+              <select name="typeService" onChange={handleTypeService}>
+              <option value={eachElement.enum}></option>
+              </select>
+            )
+                        
+          })} */}
+            <select name="typeService" onChange={handleTypeService}>
+            <option value="">Elige una opción</option>
             <option value="Ocio">Ocio</option>
             <option value="Ayuda">Ayuda</option>
             <option value="Otros">Otros</option>
-          </select>
-        </label>
+            </select>
+        
+
+        {/* <input type="text" name="typeService" value={typeServiceInput} onChange={handleTypeService} /> */}
         <br />
         <label htmlFor="description">Descripción del servicio</label>
         <input

@@ -14,8 +14,7 @@ function Reviews() {
 
       <br />
       <hr />
-      <h4>Solicitudes aceptadas</h4>
-      <p>aquí irán las solicitudes aceptadas</p>
+     
 
       <br />
     </div>

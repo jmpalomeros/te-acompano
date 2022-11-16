@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { AuthContext } from "../context/auth.context";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import {
   getReviewDetailsService,
@@ -10,6 +11,7 @@ function ReviewDetails() {
   const navigate = useNavigate();
 
   const { reviewId } = useParams();
+  const { user } = useContext(AuthContext);
 
   const [details, setDetails] = useState(null);
   const [isFetching, setFetching] = useState(true);
@@ -51,8 +53,12 @@ function ReviewDetails() {
         Voluntario valorado: {details.ratedVolunteer.firstName}{" "}
         {details.ratedVolunteer.lastName}
       </p>
-      <ReviewEdit />
+      {details.ratedVolunteer._id !== user.user._id && (
+        <div>
+        <ReviewEdit />
       <button onClick={handleDelete}>Borrar Reseña</button>
+      </div>)}
+      
     </div>
   );
 }

@@ -82,7 +82,10 @@ function Profile() {
           <div key={eachElement._id}>
             {eachElement.acceptedServices === user.user._id ? (
               <div>
+              <Link to={`/service/${eachElement._id}`}>
                 <h3>{eachElement.title}</h3>
+              </Link>
+                
                 <p>Tipo de servicio:{eachElement.typeService}</p>
                 <p>Descripción:{eachElement.description}</p>
                 <p>Ciudad:{eachElement.city}</p>

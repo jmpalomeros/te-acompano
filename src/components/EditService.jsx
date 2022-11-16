@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
+ import { AuthContext } from "../context/auth.context";
 import { getServiceDetailsService , editServiceService } from "../service/service.services"
 
 function EditService() {
@@ -64,6 +64,7 @@ function EditService() {
 
   return (
     <div>
+    {offeredServices._id === user.user._id && (
       <div>
         <label htmlFor="title">Título</label>
         <input
@@ -74,12 +75,13 @@ function EditService() {
         />
         <br />
         <label htmlFor="typeService">Tipo de Servicio</label>
-        <input
-          type="text"
-          value={typeServiceInput}
-          name="typeService"
-          onChange={typeServiceChange}
-        />
+        <select name="typeService" onChange={typeServiceChange}>
+            <option value="">Elige una opción</option>
+            <option value="Ocio">Ocio</option>
+            <option value="Ayuda">Ayuda</option>
+            <option value="Otros">Otros</option>
+            </select>
+      
         <br />
         <label htmlFor="description">Descripción del servicio</label>
         <input
@@ -97,13 +99,14 @@ function EditService() {
           onChange={cityChange}
         />
         <br />
-        
-        {user.user._id === offeredServices._id ? 
         <button onClick={handleUpdate}>Editar Servicio</button>
-        : null}
+        
         
         
       </div>
+        
+        )}
+      
     </div>
   );
 }
