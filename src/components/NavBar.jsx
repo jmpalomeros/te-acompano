@@ -2,6 +2,10 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 
 function NavBar() {
   const { authenticaUser, isLoggedIn } = useContext(AuthContext);
@@ -11,28 +15,52 @@ function NavBar() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticaUser();
-    console.log("after autenticate logout")
+    console.log("after autenticate logout");
     navigate("/");
   };
 
   return (
-    <div>
-      {isLoggedIn === true ? (
-        <div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/service-list">Lista de Servicios</NavLink>
+    <div >
+      <Navbar id="navbar" expand="lg">
+        <Container>
+        <Navbar.Brand href="/">
+          <img
+            src="./images/logo te acompano.png"
+            className="d-inline-block align-top"
+            alt="Te acompaño - Proyecto de voluntariado"
+          />
+        </Navbar.Brand>
 
-          <NavLink to="/profile">Mi perfil</NavLink>
-
-          <button onClick={handleLogout}>Log Out</button>
+      <div >
+        <Nav  className="me-auto" defaultActiveKey="/signup" variant="pills" >
+          <div >
+            {isLoggedIn === true ? (
+              <div className="navbar">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/service-list">Lista de Servicios</Nav.Link>
+                <Nav.Link href="/profile">Mi perfil</Nav.Link>
+                <Button variant="primary" onClick={handleLogout}>
+                  Log Out
+                </Button>
+              </div>
+            ) : (
+              <div className="navbar">
+                <Nav.Item>
+                  <Nav.Link href="/">Home</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link href="/login">Log In</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link className="signup-btn" href="/signup">Sign Up</Nav.Link>
+                </Nav.Item>
+              </div>
+            )}
+          </div>
+        </Nav>
         </div>
-      ) : (
-        <div>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/signup">Sign Up</NavLink>
-          <NavLink to="/login">Log In</NavLink>
-        </div>
-      )}
+        </Container>
+      </Navbar>
     </div>
   );
 }

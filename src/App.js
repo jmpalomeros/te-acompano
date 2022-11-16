@@ -14,6 +14,7 @@ import NotFound from "./pages/NotFound";
 import Reviews from "./pages/Reviews";
 import ReviewDetails from "./components/ReviewDetails";
 import IsPrivate from "./components/IsPrivate"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
