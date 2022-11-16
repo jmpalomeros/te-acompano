@@ -1,4 +1,5 @@
 //import CreateReview from "../components/CreateReview";
+import ReviewEdit from "../components/ReviewEdit";
 import ReviewList from "../components/ReviewList";
 
 
@@ -8,6 +9,8 @@ function Reviews() {
       <h3>Reseñas</h3>
 
       <ReviewList />
+
+      
 
       <br />
       <hr />

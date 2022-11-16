@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import {
   getReviewDetailsService,
   deleteReviewService,
@@ -24,7 +24,7 @@ function ReviewDetails() {
       setDetails(response.data);
       setFetching(false);
     } catch (error) {
-      navigate(error);
+      navigate("/error");
     }
   };
 

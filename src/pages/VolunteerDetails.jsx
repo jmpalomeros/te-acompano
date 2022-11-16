@@ -34,11 +34,15 @@ function VolunteerDetails() {
       {allDetails.map((eachItem) => {
         return (
           <div key={eachItem._id}>
+          {volunteerId === eachItem.ratedVolunteer._id ? (
+          <div >
             <h3>{eachItem.reviewedService.title}</h3>
             <p>{eachItem.review}</p>
             <p>{eachItem.rating}</p>
             <hr />
           </div>
+        ) : null } 
+        </div>
         );
       })}
     </div>

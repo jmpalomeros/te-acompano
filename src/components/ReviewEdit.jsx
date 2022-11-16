@@ -12,7 +12,7 @@ function ReviewEdit() {
   const navigate = useNavigate()
   const [reviewInput, setReviewInput] = useState("");
   const [ratingInput, setRatingInput] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
 
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function ReviewEdit() {
       const response = await getReviewDetailsService(reviewId);
       setReviewInput(response.data.review);
       setRatingInput(response.data.rating);
-      setIsFetching(true)
+      setIsFetching(false)
       
     } catch (error) {
       console.log(error);
@@ -62,9 +62,9 @@ function ReviewEdit() {
   return (
     <div>
       <label htmlFor="review">Reseña</label>
-      <input type="text" name="review/" value={reviewInput} onChange={updateReview}></input>
+      <input type="text" name="review" value={reviewInput} onChange={updateReview}></input>
       <label htmlFor="rating">Rating</label>
-      <input type="number" name="rating/" value={ratingInput} onChange={updateRating}></input>
+      <input type="number" name="rating" value={ratingInput} onChange={updateRating}></input>
         <button onClick={handleUpdateReview}>Editar Reseña</button>
     </div>
   );
