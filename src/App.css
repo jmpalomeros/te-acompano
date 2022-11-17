@@ -1,12 +1,21 @@
 .App {
   text-align: center;
   margin: 0 2vw 5vw 2vw;
+  /* width: 80vw; */
 }
+/* 
+body{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
 
 
 .navbar {
   display: flex;
   gap: 3vw;
+
 }
 
 .signup-btn {
@@ -19,13 +28,7 @@
   margin-top:50%
 }
 
-.cards-service-list {
-margin-top: 5vh;
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
- gap: 3vw;
-}
+
 
 #footer {
   background-color: #2d6efd;
