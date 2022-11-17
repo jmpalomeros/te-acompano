@@ -5,6 +5,7 @@
   height: 100vh;
 }
 
+
 .navbar {
   display: flex;
   gap: 3vw;
@@ -30,11 +31,24 @@ margin-top: 5vh;
 
 #footer {
   background-color: #2d6efd;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  width: 100vw;
+  width: 96vw;
   height: 5vh;
   color: white;
   padding-top: 1vh;
 }
 
+Form {
+  
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#form-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
