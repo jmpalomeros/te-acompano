@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  margin-left: 2vw;
+  margin-right: 2vw;
 }
 
 .navbar {
@@ -17,5 +19,12 @@
   margin-top:50%
 }
 
+.cards-service-list {
+margin-top: 5vh;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ gap: 3vw;
+}
 
 
