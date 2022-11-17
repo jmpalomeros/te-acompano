@@ -6,6 +6,7 @@ import {
   deleteReviewService,
 } from "../service/review.services";
 import ReviewEdit from "./ReviewEdit";
+import Button from "react-bootstrap/Button";
 
 function ReviewDetails() {
   const navigate = useNavigate();
@@ -56,7 +57,11 @@ function ReviewDetails() {
       {details.ratedVolunteer._id !== user.user._id && (
         <div>
         <ReviewEdit />
-      <button onClick={handleDelete}>Borrar Reseña</button>
+        <br />
+        <Button onClick={handleDelete} variant="primary" type="submit">
+          Borrar reseña
+        </Button>
+      
       </div>)}
       
     </div>

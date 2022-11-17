@@ -1,7 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createReviewService } from "../service/review.services";
-import { AuthContext } from "../context/auth.context";
+// import { AuthContext } from "../context/auth.context";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
@@ -9,10 +9,12 @@ function CreateReview() {
   const { serviceId } = useParams();
 
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
 
   const [reviewInput, setReviewInput] = useState("");
-  const [ratingInput, setRatingInput] = useState(0);
+  const [ratingInput, setRatingInput] = useState("");
+  const [reviewDone, setReviewDone] = useState(false);
+  
 
   const handleReviewChange = (event) => setReviewInput(event.target.value);
   const handleRatingChange = (event) => setRatingInput(event.target.value);
@@ -28,8 +30,10 @@ function CreateReview() {
 
     try {
       await createReviewService(serviceId, newReview);
-      console.log("serviceId", serviceId);
-      console.log("newReview", newReview);
+      // console.log("serviceId", serviceId);
+      // console.log("newReview", newReview);
+      setReviewDone(true);
+      navigate("/reviews");
     } catch (error) {
       console.log(error);
       navigate("/error");
@@ -38,33 +42,39 @@ function CreateReview() {
 
   return (
     <div>
-      <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="review">Reseña</Form.Label>
-          <Form.Control
-            type="text"
-            name="review"
-            value={reviewInput}
-            onChange={handleReviewChange}
-            placeholder="Danos tu oponión"
-          />
-        </Form.Group>
+      {reviewDone === false ? (
+        <Form>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label htmlFor="review">Reseña</Form.Label>
+            <Form.Control
+              type="text"
+              name="review"
+              value={reviewInput}
+              onChange={handleReviewChange}
+              placeholder="Danos tu oponión"
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="rating">Puntuación</Form.Label>
-          <Form.Control
-            type="number"
-            name="rating"
-            value={ratingInput}
-            onChange={handleRatingChange}
-            placeholder="Puntua del 1 al 5"
-          />
-        </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label htmlFor="rating">Puntuación</Form.Label>
+            <Form.Control
+              type="number"
+              name="rating"
+              value={ratingInput}
+              onChange={handleRatingChange}
+              placeholder="Puntua del 1 al 5"
+              min="0"
+              max="5"
+            />
+          </Form.Group>
 
-        <Button onClick={handleSubmit} variant="primary" type="submit">
-          Envía tu reseña
-        </Button>
-      </Form>
+          <Button onClick={handleSubmit} variant="primary" type="submit">
+            Envía tu reseña
+          </Button>
+        </Form>
+      ) : 
+        <p>ya has creado reseña</p>
+      }
     </div>
   );
 }
