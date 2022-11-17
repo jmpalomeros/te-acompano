@@ -16,10 +16,10 @@ function Search(props) {
   };
 
   return (
-    <div>
-      <div>
+    <div className="input-search">
+      <div >
       <label htmlFor="search">Buscar por título de servicio  </label>
-      <Form.Control
+      <Form.Control 
         value={searchInput}
         type="text"
         placeholder="Buscar servicios"

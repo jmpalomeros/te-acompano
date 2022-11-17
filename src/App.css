@@ -12,7 +12,7 @@ body{
 
 .navbar {
   display: flex;
-  gap: 3vw;
+  gap: 2.5vw;
 }
 
 .signup-btn {
@@ -81,4 +81,12 @@ Form {
   margin-top:50px;
   text-align: center;
   
+}
+
+.input-search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
 }
