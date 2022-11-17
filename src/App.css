@@ -65,13 +65,24 @@ Form {
   align-items: center;
   margin-top: 20px;
 }
+.carousel-item{
+width: 68%;
+}
 
 .carouselCaption {
+  width: 50%;
   background-color: aliceblue;
   opacity: 0.6;
+  margin-left: 6vw;
 }
 
 .carouselCaption p {
+  
+  color: black;
+  font-weight: 800;
+}
+
+.carouselCaption h4 {
   color: black;
   font-weight: 800;
 }

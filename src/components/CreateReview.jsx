@@ -45,7 +45,7 @@ function CreateReview() {
             name="review"
             value={reviewInput}
             onChange={handleReviewChange}
-            placeholder="Danos tu oponión"
+            placeholder="Danos tu opinión"
           />
         </Form.Group>
 
@@ -56,7 +56,7 @@ function CreateReview() {
             name="rating"
             value={ratingInput}
             onChange={handleRatingChange}
-            placeholder="Puntua del 1 al 5"
+            placeholder="Puntúa del 1 al 5"
             min="1"
             max="5"
           />
