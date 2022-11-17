@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createReviewService } from "../service/review.services";
 import { AuthContext } from "../context/auth.context";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function CreateReview() {
   const { serviceId } = useParams();
@@ -36,25 +38,33 @@ function CreateReview() {
 
   return (
     <div>
-      <form>
-        <label htmlFor="review">Reseña: </label>
-        <input
-          type="text"
-          name="review"
-          value={reviewInput}
-          onChange={handleReviewChange}
-        />
-        <br />
-        <label htmlFor="rating">Rating: </label>
-        <input
-          type="number"
-          name="rating"
-          value={ratingInput}
-          onChange={handleRatingChange}
-        />
-        <br />
-        <button onClick={handleSubmit}>Crear reseña</button>
-      </form>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="review">Reseña</Form.Label>
+          <Form.Control
+            type="text"
+            name="review"
+            value={reviewInput}
+            onChange={handleReviewChange}
+            placeholder="Danos tu oponión"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="rating">Puntuación</Form.Label>
+          <Form.Control
+            type="number"
+            name="rating"
+            value={ratingInput}
+            onChange={handleRatingChange}
+            placeholder="Puntua del 1 al 5"
+          />
+        </Form.Group>
+
+        <Button onClick={handleSubmit} variant="primary" type="submit">
+          Envía tu reseña
+        </Button>
+      </Form>
     </div>
   );
 }

@@ -70,7 +70,7 @@ function CreateService(props) {
             value={descriptionInput}
             name="description"
             onChange={handleDescription}
-            placeholder="Danos alguos detalles de lo que quieres hacer"
+            placeholder="Detalla de lo que quieres hacer"
           />
         </Form.Group>
 
