@@ -39,7 +39,7 @@ function ReviewList() {
         <h4>Reseñas que he realizado como usuario</h4>
       </div>
       <br />
-      <CardGroup class="cardgroups">
+      <CardGroup className="cardgroups">
         {myReviews.map((eachElement) => {
           return (
             <div key={eachElement._id}>
@@ -71,7 +71,7 @@ function ReviewList() {
       </CardGroup>
       <hr />
       <h4>Reseñas que he recibido como voluntario</h4>
-      <CardGroup>
+      <CardGroup className="cardgroups">
         {myReviews.map((eachElement) => {
           return (
             <div key={eachElement._id}>

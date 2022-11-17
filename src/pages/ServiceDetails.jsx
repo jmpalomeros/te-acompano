@@ -9,6 +9,7 @@ import { AuthContext } from "../context/auth.context";
 import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 function ServiceDetails() {
   const navigate = useNavigate();
@@ -60,7 +61,8 @@ function ServiceDetails() {
             <h4>Detalles del servicio</h4>
           </Accordion.Header>
           <Accordion.Body>
-          <Card className="text-center" style={{ width: "30vw" }} >
+          <CardGroup className="cardgroups">
+          <Card className="cards">
           <Card.Body>
             <h4>Servicio: {details.title}</h4>
             <p>Descripción: {details.description}</p>
@@ -73,6 +75,7 @@ function ServiceDetails() {
             )}
              </Card.Body>
             </Card>
+            </CardGroup>
           </Accordion.Body>
         </Accordion.Item>
 
@@ -81,13 +84,14 @@ function ServiceDetails() {
             <h4>Reseñas sobre el voluntario de este servicio</h4>
           </Accordion.Header>
           <Accordion.Body>
+          <VolunteerDetails />
             <h5>
             <Link to={`/volunteer/${details.offeredServices._id}/details`}>
               {details.offeredServices.firstName}{" "}
               {details.offeredServices.lastName}
             </Link>
             </h5>
-            <VolunteerDetails />
+            
           </Accordion.Body>
         </Accordion.Item>
 

@@ -1,12 +1,14 @@
 import { AuthContext } from "../context/auth.context";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams} from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   getReviewDetailsService,
   deleteReviewService,
 } from "../service/review.services";
 import ReviewEdit from "./ReviewEdit";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
 
 function ReviewDetails() {
   const navigate = useNavigate();
@@ -46,24 +48,35 @@ function ReviewDetails() {
 
   return (
     <div>
-      <h4>Servicio valorado:{details.reviewedService.title}</h4>
-      <p>
-        Detalles de la valoración:{details.review} <br /> {details.rating}
-      </p>
-      <p>
-        Voluntario valorado: {details.ratedVolunteer.firstName}{" "}
-        {details.ratedVolunteer.lastName}
-      </p>
+      <CardGroup className="cardgroups">
+        <Card className="cards">
+          <Card.Body>
+            <Card.Title>
+              <h4>Servicio valorado:{details.reviewedService.title}</h4>
+            </Card.Title>
+            <Card.Text>
+              <p>
+                Detalles de la valoración:{details.review} <br />{" "}
+                {details.rating}
+              </p>
+              <p>
+                Voluntario valorado: {details.ratedVolunteer.firstName}{" "}
+                {details.ratedVolunteer.lastName}
+              </p>
+            </Card.Text>
+          </Card.Body>
+        </Card>
+      </CardGroup>
+
       {details.ratedVolunteer._id !== user.user._id && (
         <div>
-        <ReviewEdit />
-        <br />
-        <Button onClick={handleDelete} variant="primary" type="submit">
-          Borrar reseña
-        </Button>
-      
-      </div>)}
-      
+          <ReviewEdit />
+          <br />
+          <Button onClick={handleDelete} variant="primary" type="submit">
+            Borrar reseña
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
