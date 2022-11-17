@@ -7,6 +7,8 @@ import VolunteerDetails from "./VolunteerDetails";
 import { acceptServiceService } from "../service/service.services";
 import { AuthContext } from "../context/auth.context";
 import Accordion from "react-bootstrap/Accordion";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 function ServiceDetails() {
   const navigate = useNavigate();
@@ -58,13 +60,19 @@ function ServiceDetails() {
             <h3>Detalles del servicio</h3>
           </Accordion.Header>
           <Accordion.Body>
-            <p>Título: {details.title}</p>
-            <p>Descripción:{details.description}</p>
+          <Card className="text-center" style={{ width: "30vw" }} >
+          <Card.Body>
+            <h4>Servicio: {details.title}</h4>
+            <p>Descripción: {details.description}</p>
+            <p>Servicio ofrecido por: {" "}
+            {details.offeredServices.firstName}{" "}
+              {details.offeredServices.lastName}</p>
             <EditService />
-
             {details.offeredServices._id !== user.user._id && (
-              <button onClick={handleUpdate}>Aceptar Servicio</button>
+              <Button onClick={handleUpdate}>Aceptar Servicio</Button>
             )}
+             </Card.Body>
+            </Card>
           </Accordion.Body>
         </Accordion.Item>
 
@@ -73,11 +81,12 @@ function ServiceDetails() {
             <h3>Reseñas sobre el voluntario de este servicio</h3>
           </Accordion.Header>
           <Accordion.Body>
+            <h5>
             <Link to={`/volunteer/${details.offeredServices._id}/details`}>
               {details.offeredServices.firstName}{" "}
               {details.offeredServices.lastName}
             </Link>
-
+            </h5>
             <VolunteerDetails />
           </Accordion.Body>
         </Accordion.Item>
@@ -86,7 +95,7 @@ function ServiceDetails() {
           {details.offeredServices._id !== user.user._id && (
             <div>
               <Accordion.Header>
-                <h3>Crear Reseña de este servicio</h3>
+                <h3>Crear Reseña del voluntario sobre este servicio</h3>
               </Accordion.Header>
               <Accordion.Body>
                 <CreateReview />

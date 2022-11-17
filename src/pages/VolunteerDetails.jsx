@@ -46,7 +46,6 @@ function VolunteerDetails() {
         );
       })}
 
-      <Link to={"/profile"}> <button>Volver al perfil</button> </Link>
     </div>
   );
 }
