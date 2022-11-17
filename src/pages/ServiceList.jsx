@@ -8,6 +8,8 @@ function ServiceList() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext)
   const [list, setList] = useState([]);
+  const [typeServiceList, setTypeServiceList] = useState()
+  const [cloneList, setCloneList] = useState([])
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ function ServiceList() {
   const getListData = async () => {
     try {
       const response = await getAllServicesService();
-
+      setCloneList(response.data)
       setList(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -29,23 +31,38 @@ function ServiceList() {
     return <h3>Loading</h3>;
   }
 
+
   const filterList = (filterQuery) => {
+    
     const listadoFiltrado = list.filter((eachElem) => {
       return eachElem.title.includes(filterQuery);
     });
-    setList(listadoFiltrado);
-   
+    setCloneList(listadoFiltrado)
+    
   };
+
+  const filterTypeServiceList = (filterQuery) => {
+    const listadoFiltrado = list.filter((eachElem) => {
+      return eachElem.typeService.includes(filterQuery);
+    });
+    
+    setTypeServiceList(listadoFiltrado)
+    setCloneList(listadoFiltrado)
+    
+  };
+
+  console.log(typeServiceList)
 
   return (
     <div>
       <h3>Lista de servicios ofrecidos</h3>
 
-      <Search list={filterList} />
+      <Search list={filterList} typeService={filterTypeServiceList}/>
+      
 
-      {list.map((eachElement) => {
+      {cloneList.map((eachElement) => {
         return (
-          <div >
+          <div key={eachElement._id}>
             {eachElement.acceptedServices === undefined ? (
               <Link to={`/service/${eachElement._id}`}>
                 <p key={eachElement._id}>{eachElement.title}</p>

@@ -54,7 +54,8 @@ function EditService() {
                 }
 
                 await editServiceService(serviceId, updateService )
-                console.log("SERVICIO ACTUALIZADO", updateService);
+                
+                navigate("/service-list")
 
             } catch (error) {
                 navigate("/error")
