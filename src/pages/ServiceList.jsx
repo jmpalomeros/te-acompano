@@ -6,6 +6,7 @@ import Search from "../components/Search";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { CardGroup } from "react-bootstrap";
 
 function ServiceList() {
   const navigate = useNavigate();
@@ -59,13 +60,14 @@ function ServiceList() {
       <Search list={filterList} typeService={filterTypeServiceList} />
 
       <h4>Lista de servicios disponibles</h4>
-      <div className="cards-service-list">
+      <div>
+        <CardGroup className="cardgroups">
       {cloneList.map((eachElement) => {
         return (
           <div>
             <div key={eachElement._id}>
               {eachElement.acceptedServices === undefined ? (
-                <Card className="text-center"  style={{ width: "30vw" }}>
+                <Card className="cards"  >
                   <Card.Header>
                     Servicio:{" "}
                     <Card.Title>
@@ -80,11 +82,16 @@ function ServiceList() {
                   </Card.Body>
                 </Card>
               ) : null}
+              
               <br />
+              
             </div>
+            
           </div>
+          
         );
       })}
+      </CardGroup>
     </div>
     </div>
   );
