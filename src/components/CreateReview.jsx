@@ -63,7 +63,7 @@ function CreateReview() {
               value={ratingInput}
               onChange={handleRatingChange}
               placeholder="Puntua del 1 al 5"
-              min="0"
+              min="1"
               max="5"
             />
           </Form.Group>

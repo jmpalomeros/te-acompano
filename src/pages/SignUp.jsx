@@ -126,7 +126,7 @@ function SignUp() {
             onChange={handlePasswordChange}
             placeholder="Crea tu contraseña"
           />
-          <Form.Text className="text-muted">Formate: Tucontraseña1!</Form.Text>
+          <Form.Text className="text-muted">Formato: Tucontraseña1!</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -147,7 +147,10 @@ function SignUp() {
             value={age}
             onChange={handleAgeChange}
             placeholder="Escribe tu edad"
+            min="18"
+            max="100"            
           />
+          
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">

@@ -124,6 +124,8 @@ function EditProfile(props) {
             value={ageInput}
             onChange={ageChange}
             placeholder="Escribe tu edad"
+            min="18"
+            max="100"
           />
         </Form.Group>
 
