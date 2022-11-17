@@ -37,7 +37,7 @@ function Login() {
 
       authenticaUser();
 
-      navigate("/");
+      navigate("/profile");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

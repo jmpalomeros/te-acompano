@@ -55,26 +55,27 @@ function ServiceDetails() {
 
   return (
     <div>
+      <h4>Servicio: {details.title}</h4>
+      <p>Descripción: {details.description}</p>
+      <p>
+        Servicio ofrecido por: {details.offeredServices.firstName}{" "}
+        {details.offeredServices.lastName}
+      </p>
       <Accordion defaultActiveKey={["0"]} alwaysOpen>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <h4>Detalles del servicio</h4>
+            <h4>Editar el servicio ofrecido</h4>
           </Accordion.Header>
           <Accordion.Body>
-          <CardGroup className="cardgroups">
-          <Card className="cards">
-          <Card.Body>
-            <h4>Servicio: {details.title}</h4>
-            <p>Descripción: {details.description}</p>
-            <p>Servicio ofrecido por: {" "}
-            {details.offeredServices.firstName}{" "}
-              {details.offeredServices.lastName}</p>
-            <EditService />
-            {details.offeredServices._id !== user.user._id && (
-              <Button onClick={handleUpdate}>Aceptar Servicio</Button>
-            )}
-             </Card.Body>
-            </Card>
+            <CardGroup className="cardgroups">
+              <Card className="cards">
+                <Card.Body>
+                  <EditService />
+                  {details.offeredServices._id !== user.user._id && (
+                    <Button onClick={handleUpdate}>Aceptar Servicio</Button>
+                  )}
+                </Card.Body>
+              </Card>
             </CardGroup>
           </Accordion.Body>
         </Accordion.Item>
@@ -84,14 +85,13 @@ function ServiceDetails() {
             <h4>Reseñas sobre el voluntario de este servicio</h4>
           </Accordion.Header>
           <Accordion.Body>
-          <VolunteerDetails />
+            <VolunteerDetails />
             <h5>
-            <Link to={`/volunteer/${details.offeredServices._id}/details`}>
-              {details.offeredServices.firstName}{" "}
-              {details.offeredServices.lastName}
-            </Link>
+              <Link to={`/volunteer/${details.offeredServices._id}/details`}>
+                {details.offeredServices.firstName}{" "}
+                {details.offeredServices.lastName}
+              </Link>
             </h5>
-            
           </Accordion.Body>
         </Accordion.Item>
 
