@@ -3,7 +3,6 @@
   margin: 0 2vw 5vw 2vw;
 }
 
-
 .navbar {
   display: flex;
   gap: 3vw;
@@ -13,23 +12,23 @@
   color: white !important;
 }
 
-#spinner{
-  display:flex;
+#spinner {
+  display: flex;
   justify-content: center;
-  margin-top:50%
+  margin-top: 50%;
 }
 
 .cards-service-list {
-margin-top: 5vh;
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
- gap: 3vw;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 3vw;
 }
 
 #footer {
   background-color: #2d6efd;
-  position:fixed;
+  position: fixed;
   width: 96vw;
   height: 5vh;
   color: white;
@@ -39,10 +38,8 @@ margin-top: 5vh;
 }
 
 Form {
-  
   display: flex;
   flex-direction: column;
-  
 }
 
 #form-signup {
@@ -52,10 +49,9 @@ Form {
   justify-content: center;
 }
 
-.cards{
+.cards {
   margin: 2vh 1vw 2vh 0;
   width: 500px;
-
 }
 
 .cardgroups {
@@ -64,10 +60,27 @@ Form {
   align-items: center;
 }
 
-.fotoPerfil{
+.fotoPerfil {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px
+  margin-top: 20px;
+}
 
+.carouselCaption {
+  background-color: aliceblue;
+
+  opacity: 0.6;
+}
+
+.carouselCaption p {
+  color: black;
+  font-weight: 800;
+}
+
+.homeText{
+  color: black;
+  margin-top:50px;
+  text-align: center;
+  
 }
