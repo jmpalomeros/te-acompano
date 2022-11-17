@@ -55,12 +55,14 @@ function Profile() {
   return (
     <div>
       <Card style={{ width: "100%" }}>
-        <Card.Img
-          variant="top"
-          src={userDetails.avatar}
-          alt="avatar"
-          style={{ width: 300 }}
-        />
+        <div className="fotoPerfil">
+          <Card.Img
+            variant="top"
+            src={userDetails.avatar}
+            alt="avatar"
+            style={{ width: 150 }}
+          />
+        </div>
 
         <Card.Body>
           <Card.Title>Mi perfil</Card.Title>
@@ -97,13 +99,13 @@ function Profile() {
             <h4>Servicios que he aceptado</h4>
           </Accordion.Header>
           <Accordion.Body>
-            <CardGroup>
+            <CardGroup className="cardgroups">
               {serviceList.map((eachElement) => {
                 return (
                   <div key={eachElement._id}>
                     {eachElement.acceptedServices === user.user._id ? (
                       <div>
-                        <Card>
+                        <Card className="cards">
                           <Card.Body>
                             <Card.Title>
                               <h4>Servicio:</h4>
@@ -112,9 +114,9 @@ function Profile() {
                               </Link>
                             </Card.Title>
                             <Card.Text>
-                              <p>Tipo de servicio:{eachElement.typeService}</p>
-                              <p>Descripción:{eachElement.description}</p>
-                              <p>Ciudad:{eachElement.city}</p>
+                              <p>Tipo de servicio: {eachElement.typeService}</p>
+                              <p>Descripción: {eachElement.description}</p>
+                              <p>Ciudad: {eachElement.city}</p>
                             </Card.Text>
                           </Card.Body>
                         </Card>
@@ -132,25 +134,25 @@ function Profile() {
             <h4>Servicios ofrecidos</h4>
           </Accordion.Header>
           <Accordion.Body>
-            <CardGroup>
+            <CardGroup className="cardgroups">
               {serviceList.map((eachElement) => {
                 return (
                   <div key={eachElement._id}>
                     {eachElement.offeredServices === user.user._id ? (
                       <div>
-                        <Card >
+                        <Card className="cards">
                           <Card.Body>
                             <Card.Title>
-                              <h4>Servicio</h4>{" "}
+                              <h4>Servicio:</h4>{" "}
                               <Link to={`/service/${eachElement._id}`}>
                                 <h4>{eachElement.title}</h4>
                               </Link>{" "}
                             </Card.Title>
 
                             <Card.Text>
-                              <p>Tipo de servicio:{eachElement.typeService}</p>
-                              <p>Descripción:{eachElement.description}</p>
-                              <p>Ciudad:{eachElement.city}</p>
+                              <p>Tipo de servicio: {eachElement.typeService}</p>
+                              <p>Descripción: {eachElement.description}</p>
+                              <p>Ciudad: {eachElement.city}</p>
                             </Card.Text>
                           </Card.Body>
                         </Card>
@@ -162,11 +164,17 @@ function Profile() {
             </CardGroup>
           </Accordion.Body>
         </Accordion.Item>
+        <Accordion.Item eventKey="5">
+          <Accordion.Header>
+            <h4>Reseñas</h4>
+          </Accordion.Header>
+          <Accordion.Body>
+            <h4>
+              <Link to="/reviews">Ver Reseñas</Link>
+            </h4>
+          </Accordion.Body>
+        </Accordion.Item>
       </Accordion>
-
-      <h4>
-        <Link to="/reviews">Ver Reseñas</Link>
-      </h4>
     </div>
   );
 }

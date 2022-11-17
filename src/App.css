@@ -34,7 +34,7 @@ margin-top: 5vh;
   height: 5vh;
   color: white;
   padding-top: 1vh;
-  margin-top: vh;
+  margin-top: 20vh;
   bottom: 0;
 }
 
@@ -62,4 +62,12 @@ Form {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.fotoPerfil{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px
+
 }
