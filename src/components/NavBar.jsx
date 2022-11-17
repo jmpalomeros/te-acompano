@@ -1,4 +1,3 @@
-
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
@@ -20,45 +19,47 @@ function NavBar() {
   };
 
   return (
-    <div >
+    <div>
       <Navbar id="navbar" expand="lg">
         <Container>
-        <Navbar.Brand href="/">
-          <img
-            src="./images/logo te acompano.png"
-            className="d-inline-block align-top"
-            alt="Te acompaño - Proyecto de voluntariado"
-          />
-        </Navbar.Brand>
+          <Navbar.Brand href="/">
+            <img
+              src="./images/logo te acompano.png"
+              className="d-inline-block align-top"
+              alt="Te acompaño - Proyecto de voluntariado"
+            />
+          </Navbar.Brand>
 
-      <div >
-        <Nav  className="me-auto" defaultActiveKey="/signup" variant="pills" >
-          <div >
-            {isLoggedIn === true ? (
-              <div className="navbar">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/service-list">Lista de Servicios</Nav.Link>
-                <Nav.Link href="/profile">Mi perfil</Nav.Link>
-                <Button variant="primary" onClick={handleLogout}>
-                  Salir
-                </Button>
+          <div>
+            <Nav className="me-auto" defaultActiveKey="/signup" variant="pills">
+              <div>
+                {isLoggedIn === true ? (
+                  <div className="navbar">
+                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/service-list">Lista de Servicios</Nav.Link>
+                    <Nav.Link href="/profile">Mi perfil</Nav.Link>
+                    <Button variant="primary" onClick={handleLogout}>
+                      Salir
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="navbar">
+                    <Nav.Item>
+                      <Nav.Link href="/">Home</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link href="/login">Accede</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link className="signup-btn" href="/signup">
+                        Regístrate
+                      </Nav.Link>
+                    </Nav.Item>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="navbar">
-                <Nav.Item>
-                  <Nav.Link href="/">Home</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link href="/login">Accede</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link className="signup-btn" href="/signup">Registrate</Nav.Link>
-                </Nav.Item>
-              </div>
-            )}
+            </Nav>
           </div>
-        </Nav>
-        </div>
         </Container>
       </Navbar>
     </div>

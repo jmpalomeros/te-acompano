@@ -1,20 +1,18 @@
 .App {
   text-align: center;
-  margin: 0 2vw 5vw 2vw;
-  /* width: 80vw; */
+  margin: 0 2vw 11vw 2vw;
+  width: 70vw;
 }
-/* 
+
 body{
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+} 
 
 .navbar {
   display: flex;
   gap: 3vw;
-
 }
 
 .signup-btn {
@@ -27,26 +25,14 @@ body{
   margin-top: 50%;
 }
 
-<<<<<<< HEAD
-.cards-service-list {
-  margin-top: 5vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 3vw;
-}
-=======
-
->>>>>>> 3f8c7974b5c5d7f356ff73b83e43b580a06718d8
-
 #footer {
   background-color: #2d6efd;
   position: fixed;
-  width: 96vw;
+  width: 70%;
   height: 5vh;
   color: white;
   padding-top: 1vh;
-  margin-top: 20vh;
+  margin-top: 15vh;
   bottom: 0;
 }
 
@@ -82,7 +68,6 @@ Form {
 
 .carouselCaption {
   background-color: aliceblue;
-
   opacity: 0.6;
 }
 
