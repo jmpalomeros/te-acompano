@@ -2,6 +2,9 @@ import { useState } from "react";
 import { signupService } from "../service/auth.services";
 import { useNavigate } from "react-router-dom";
 import { uploadImageService } from "../service/upload.services";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import PuffLoader from "react-spinners/PuffLoader";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -31,7 +34,7 @@ function SignUp() {
 
     try {
       const response = await uploadImageService(sendObj);
-      console.log("foto", response.data.avatar);
+      //console.log("foto", response.data.avatar);
       setAvatar(response.data.avatar);
       setIsFetching(false);
     } catch (error) {
@@ -52,7 +55,7 @@ function SignUp() {
       city: city,
       avatar: avatar,
     };
-    console.log("usuario creado", newUser);
+    //console.log("usuario creado", newUser);
     try {
       await signupService(newUser);
       navigate("/login");
@@ -66,68 +69,103 @@ function SignUp() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return (
+      <div id="spinner">
+        <PuffLoader color={"blue"} size={50} />
+      </div>
+    );
   }
 
   return (
     <div>
-      <h2>SignUp</h2>
+      <h4>Registrate</h4>
 
-      <form onSubmit={handleSignup}>
-        <label htmlFor="firstName">Nombre: </label>
-        <input
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={handleFirstNameChange}
-        />
-        <br />
-        <label htmlFor="lastName">Apellidos: </label>
-        <input
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={handleLastNameChange}
-        />
-        <br />
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <br />
-        <label htmlFor="password">Contraseña: </label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <br />
-        <label htmlFor="avatar"> Avatar: </label>
-        <input type="file" name="avatar" onChange={handleUpdateAvatar} />
-        <br />
-        <label htmlFor="age">Edad: </label>
-        <input
-          type="number"
-          name="age"
-          value={age}
-          onChange={handleAgeChange}
-        />
-        <br />
-        <label htmlFor="city">Ciudad: </label>
-        <input
-          type="text"
-          name="city"
-          value={city}
-          onChange={handleCityChange}
-        />
-        <br />
-        <button type="submit">Registrar</button>
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="firstName">Nombre</Form.Label>
+          <Form.Control
+            type="text"
+            name="firstName"
+            value={firstName}
+            onChange={handleFirstNameChange}
+            placeholder="Escribe tu nombre"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="lastName">Apellidos</Form.Label>
+          <Form.Control
+            type="text"
+            name="lastName"
+            value={lastName}
+            onChange={handleLastNameChange}
+            placeholder="Escribe tus apellidos"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+            placeholder="Escribe tu email"
+          />
+          <Form.Text className="text-muted">
+            Formate: tucorreo@tucorreo.com
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="password">Contraseña</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+            placeholder="Crea tu contraseña"
+          />
+          <Form.Text className="text-muted">Formate: Tucontraseña1!</Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label htmlFor="avatar">Imagen</Form.Label>
+          <Form.Control
+            type="file"
+            name="avatar"
+            onChange={handleUpdateAvatar}
+            placeholder="Selecciona una imagen"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label htmlFor="age">Edad</Form.Label>
+          <Form.Control
+            type="number"
+            name="age"
+            value={age}
+            onChange={handleAgeChange}
+            placeholder="Escribe tu edad"
+          />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label htmlFor="city">Ciudad</Form.Label>
+          <Form.Control
+            type="text"
+            name="city"
+            value={city}
+            onChange={handleCityChange}
+            placeholder="Escribe el nombre de tu ciudad"
+          />
+        </Form.Group>
+
+        <Button onClick={handleSignup} variant="primary" type="submit">
+          Enviar
+        </Button>
         {errorMessage !== "" && <p>{errorMessage}</p>}
-      </form>
+      </Form>
     </div>
   );
 }

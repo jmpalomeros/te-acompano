@@ -40,7 +40,7 @@ function NavBar() {
                 <Nav.Link href="/service-list">Lista de Servicios</Nav.Link>
                 <Nav.Link href="/profile">Mi perfil</Nav.Link>
                 <Button variant="primary" onClick={handleLogout}>
-                  Log Out
+                  Salir
                 </Button>
               </div>
             ) : (
@@ -49,10 +49,10 @@ function NavBar() {
                   <Nav.Link href="/">Home</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link href="/login">Log In</Nav.Link>
+                  <Nav.Link href="/login">Accede</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link className="signup-btn" href="/signup">Sign Up</Nav.Link>
+                  <Nav.Link className="signup-btn" href="/signup">Registrate</Nav.Link>
                 </Nav.Item>
               </div>
             )}

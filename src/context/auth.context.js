@@ -43,11 +43,9 @@ function AuthWrapper(props) {
   if (isFetching === true) {
     return (
       <div id="spinner">
-      
-      <PuffLoader color={"blue"} size={50}/>
-      
+        <PuffLoader color={"blue"} size={50} />
       </div>
-      )
+    );
   }
 
   return (

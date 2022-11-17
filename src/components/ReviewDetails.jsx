@@ -32,7 +32,7 @@ function ReviewDetails() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   const handleDelete = async () => {
@@ -46,7 +46,7 @@ function ReviewDetails() {
 
   return (
     <div>
-      <h3>Servicio valorado:{details.reviewedService.title}</h3>
+      <h4>Servicio valorado:{details.reviewedService.title}</h4>
       <p>
         Detalles de la valoración:{details.review} <br /> {details.rating}
       </p>
