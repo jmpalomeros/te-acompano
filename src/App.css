@@ -2,6 +2,7 @@
   text-align: center;
   margin-left: 2vw;
   margin-right: 2vw;
+  height: 100vh;
 }
 
 .navbar {
@@ -27,4 +28,13 @@ margin-top: 5vh;
  gap: 3vw;
 }
 
+#footer {
+  background-color: #2d6efd;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 5vh;
+  color: white;
+  padding-top: 1vh;
+}
 
