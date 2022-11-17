@@ -31,7 +31,7 @@ function ServiceList() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   const filterList = (filterQuery) => {
@@ -54,11 +54,11 @@ function ServiceList() {
 
   return (
     <div>
-      <h3>Buscador de servicios disponibles</h3>
+      <h4>Buscador de servicios disponibles</h4>
 
       <Search list={filterList} typeService={filterTypeServiceList} />
 
-      <h3>Lista de servicios disponibles</h3>
+      <h4>Lista de servicios disponibles</h4>
       <div className="cards-service-list">
       {cloneList.map((eachElement) => {
         return (

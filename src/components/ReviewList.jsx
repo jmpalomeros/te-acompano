@@ -26,19 +26,19 @@ function ReviewList() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   return (
     <div>
-      <h3>Reseñas realizadas</h3>
+      <h4>Reseñas realizadas</h4>
       {myReviews.map((eachElement) => {
         return (
           <div key={eachElement._id}>
             {eachElement.reviewAuthor._id === user.user._id ? (
               <div>
               <Link to={`/review/${eachElement._id}`}>
-                <h3>{eachElement.reviewedService.title}</h3>
+                <h4>{eachElement.reviewedService.title}</h4>
               </Link>
   
               <p>Voluntario valorado:  {" "}
@@ -53,14 +53,14 @@ function ReviewList() {
         );
       })}
 <hr />
-<h3>Reseñas recibidas</h3>
+<h4>Reseñas recibidas</h4>
       {myReviews.map((eachElement) => {
         return (
           <div key={eachElement._id}>
             {eachElement.ratedVolunteer._id === user.user._id ? (
               <div>
               <Link to={`/review/${eachElement._id}`}>
-                <h3>{eachElement.reviewedService.title}</h3>
+                <h4>{eachElement.reviewedService.title}</h4>
               </Link>
               <p>Reseña:{eachElement.review}</p>
               <p>Valoración:{eachElement.rating}</p>

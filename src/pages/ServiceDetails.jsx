@@ -36,7 +36,7 @@ function ServiceDetails() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   const handleUpdate = async (event) => {
@@ -57,7 +57,7 @@ function ServiceDetails() {
       <Accordion defaultActiveKey={["0"]} alwaysOpen>
         <Accordion.Item eventKey="0">
           <Accordion.Header>
-            <h3>Detalles del servicio</h3>
+            <h4>Detalles del servicio</h4>
           </Accordion.Header>
           <Accordion.Body>
           <Card className="text-center" style={{ width: "30vw" }} >
@@ -78,7 +78,7 @@ function ServiceDetails() {
 
         <Accordion.Item eventKey="1">
           <Accordion.Header>
-            <h3>Reseñas sobre el voluntario de este servicio</h3>
+            <h4>Reseñas sobre el voluntario de este servicio</h4>
           </Accordion.Header>
           <Accordion.Body>
             <h5>
@@ -95,7 +95,7 @@ function ServiceDetails() {
           {details.offeredServices._id !== user.user._id && (
             <div>
               <Accordion.Header>
-                <h3>Crear Reseña del voluntario sobre este servicio</h3>
+                <h4>Crear Reseña del voluntario sobre este servicio</h4>
               </Accordion.Header>
               <Accordion.Body>
                 <CreateReview />

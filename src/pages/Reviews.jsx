@@ -6,7 +6,7 @@ import ReviewList from "../components/ReviewList";
 function Reviews() {
   return (
     <div>
-      <h3>Reseñas</h3>
+      <h4>Reseñas</h4>
 
       <ReviewList />
 

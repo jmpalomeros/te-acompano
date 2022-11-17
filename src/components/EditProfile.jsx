@@ -78,7 +78,7 @@ function EditProfile(props) {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   return (

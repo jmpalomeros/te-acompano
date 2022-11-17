@@ -26,7 +26,7 @@ function VolunteerDetails() {
   };
 
   if (isFetching === true) {
-    return <h3>Loading</h3>;
+    return <h4>Loading</h4>;
   }
 
   return (
@@ -36,7 +36,7 @@ function VolunteerDetails() {
           <div key={eachItem._id}>
           {volunteerId === eachItem.ratedVolunteer._id ? (
           <div >
-            <h3>{eachItem.reviewedService.title}</h3>
+            <h4>{eachItem.reviewedService.title}</h4>
             <p>{eachItem.review}</p>
             <p>{eachItem.rating}</p>
             <hr />
