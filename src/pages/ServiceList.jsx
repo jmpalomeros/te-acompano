@@ -3,10 +3,9 @@ import { useState, useEffect, useContext } from "react";
 import { getAllServicesService } from "../service/service.services";
 import { AuthContext } from "../context/auth.context";
 import Search from "../components/Search";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { CardGroup } from "react-bootstrap";
+import PuffLoader from "react-spinners/PuffLoader";
 
 function ServiceList() {
   const navigate = useNavigate();
@@ -32,7 +31,11 @@ function ServiceList() {
   };
 
   if (isFetching === true) {
-    return <h4>Loading</h4>;
+    return (
+      <h4>
+        <PuffLoader color={"blue"} size={50} />
+      </h4>
+    );
   }
 
   const filterList = (filterQuery) => {
@@ -51,8 +54,6 @@ function ServiceList() {
     setCloneList(listadoFiltrado);
   };
 
-  console.log(typeServiceList);
-
   return (
     <div>
       <h4>Buscador de servicios disponibles</h4>
@@ -62,37 +63,34 @@ function ServiceList() {
       <h4>Lista de servicios disponibles</h4>
       <div>
         <CardGroup className="cardgroups">
-      {cloneList.map((eachElement) => {
-        return (
-          <div>
-            <div key={eachElement._id}>
-              {eachElement.acceptedServices === undefined ? (
-                <Card className="cards"  >
-                  <Card.Header>
-                    Servicio:{" "}
-                    <Card.Title>
-                      <Link to={`/service/${eachElement._id}`}>
-                        <p key={eachElement._id}>{eachElement.title}</p>
-                      </Link>
-                    </Card.Title>
-                  </Card.Header>
-                  <Card.Body>
-                    <p> Descripción: {eachElement.description}</p>
-                    <p> Categoría: {eachElement.typeService}</p>
-                  </Card.Body>
-                </Card>
-              ) : null}
-              
-              <br />
-              
-            </div>
-            
-          </div>
-          
-        );
-      })}
-      </CardGroup>
-    </div>
+          {cloneList.map((eachElement) => {
+            return (
+              <div key={eachElement._id}>
+                <div >
+                  {eachElement.acceptedServices === undefined ? (
+                    <Card className="cards">
+                      <Card.Header>
+                        Servicio:{" "}
+                        <Card.Title>
+                          <Link to={`/service/${eachElement._id}`}>
+                            <p key={eachElement._id}>{eachElement.title}</p>
+                          </Link>
+                        </Card.Title>
+                      </Card.Header>
+                      <Card.Body>
+                        <p> Descripción: {eachElement.description}</p>
+                        <p> Categoría: {eachElement.typeService}</p>
+                      </Card.Body>
+                    </Card>
+                  ) : null}
+
+                  <br />
+                </div>
+              </div>
+            );
+          })}
+        </CardGroup>
+      </div>
     </div>
   );
 }

@@ -8,7 +8,6 @@ import PuffLoader from "react-spinners/PuffLoader";
 
 function SignUp() {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -17,7 +16,6 @@ function SignUp() {
   const [city, setCity] = useState("");
   const [avatar, setAvatar] = useState("");
   const [isFetching, setIsFetching] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -37,7 +35,6 @@ function SignUp() {
       setAvatar(response.data.avatar);
       setIsFetching(false);
     } catch (error) {
-      console.log("error", error);
       navigate("/error");
     }
   };
@@ -54,7 +51,7 @@ function SignUp() {
       city: city,
       avatar: avatar,
     };
-    //console.log("usuario creado", newUser);
+
     try {
       await signupService(newUser);
       navigate("/login");
@@ -81,7 +78,9 @@ function SignUp() {
 
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="firstName">Nombre<sup>*</sup></Form.Label>
+          <Form.Label htmlFor="firstName">
+            Nombre<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type="text"
             name="firstName"
@@ -92,7 +91,9 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="lastName">Apellidos<sup>*</sup></Form.Label>
+          <Form.Label htmlFor="lastName">
+            Apellidos<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type="text"
             name="lastName"
@@ -103,7 +104,9 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="email">Email<sup>*</sup></Form.Label>
+          <Form.Label htmlFor="email">
+            Email<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type="email"
             name="email"
@@ -117,7 +120,9 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="password">Contraseña<sup>*</sup></Form.Label>
+          <Form.Label htmlFor="password">
+            Contraseña<sup>*</sup>
+          </Form.Label>
           <Form.Control
             type="password"
             name="password"
@@ -125,7 +130,10 @@ function SignUp() {
             onChange={handlePasswordChange}
             placeholder="Crea tu contraseña"
           />
-          <Form.Text className="text-muted">Debe incluir al menos 8 caracteres, una mayúscula, un número y un símbolo</Form.Text>
+          <Form.Text className="text-muted">
+            Debe incluir al menos 8 caracteres, una mayúscula, un número y un
+            símbolo
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -147,9 +155,8 @@ function SignUp() {
             onChange={handleAgeChange}
             placeholder="Escribe tu edad"
             min="18"
-            max="100"            
+            max="100"
           />
-          
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -162,7 +169,9 @@ function SignUp() {
             placeholder="Escribe el nombre de tu ciudad"
           />
         </Form.Group>
-        <Form.Text>Los campos marcados con (<sup>*</sup>) son obligatorios</Form.Text>
+        <Form.Text>
+          Los campos marcados con (<sup>*</sup>) son obligatorios
+        </Form.Text>
         <br />
         <Button onClick={handleSignup} variant="primary" type="submit">
           Enviar

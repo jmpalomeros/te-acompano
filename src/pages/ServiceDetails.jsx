@@ -10,13 +10,12 @@ import Accordion from "react-bootstrap/Accordion";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
+import PuffLoader from "react-spinners/PuffLoader";
 
 function ServiceDetails() {
   const navigate = useNavigate();
-
   const { serviceId } = useParams();
   const { user } = useContext(AuthContext);
-
   const [details, setDetails] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
   const [acceptedServiceInput, setAcceptedServiceInput] = useState({});
@@ -30,14 +29,17 @@ function ServiceDetails() {
       const response = await getServiceDetailsService(serviceId);
       setDetails(response.data);
       setIsFetching(false);
-      console.log("response", response.data);
     } catch (error) {
       navigate("/error");
     }
   };
 
   if (isFetching === true) {
-    return <h4>Loading</h4>;
+    return (
+      <h4>
+        <PuffLoader color={"blue"} size={50} />
+      </h4>
+    );
   }
 
   const handleUpdate = async (event) => {

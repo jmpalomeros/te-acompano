@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getAllReviewsService } from "../service/review.services";
 import { CardGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
+import PuffLoader from "react-spinners/PuffLoader";
 
 function VolunteerDetails() {
   const navigate = useNavigate();
@@ -17,8 +18,6 @@ function VolunteerDetails() {
   const getAllDetailsData = async () => {
     try {
       const response = await getAllReviewsService();
-      console.log("volunteerId", volunteerId);
-      console.log("response.data", response.data);
       setAllDetails(response.data);
       setIsFetching(false);
     } catch (error) {
@@ -27,7 +26,11 @@ function VolunteerDetails() {
   };
 
   if (isFetching === true) {
-    return <h4>Loading</h4>;
+    return (
+      <h4>
+        <PuffLoader color={"blue"} size={50} />
+      </h4>
+    );
   }
 
   return (
@@ -44,7 +47,10 @@ function VolunteerDetails() {
                   <Card.Header>
                     <Card.Title>
                       <h4>Servicio: {eachItem.reviewedService.title}</h4>
-                      <p>Voluntario: {eachItem.ratedVolunteer.firstName} {eachItem.ratedVolunteer.lastName}</p>
+                      <p>
+                        Voluntario: {eachItem.ratedVolunteer.firstName}{" "}
+                        {eachItem.ratedVolunteer.lastName}
+                      </p>
                     </Card.Title>
                   </Card.Header>
                   <Card.Body>

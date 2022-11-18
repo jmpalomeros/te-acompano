@@ -33,13 +33,9 @@ function Profile() {
 
       const allServiceResponse = await getAllServicesService();
       setServiceList(allServiceResponse.data);
-
-      console.log("service list", serviceList);
-
-      console.log("img", userDetailsResponse.data.avatar);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
+      navigate("/error");
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
       } else {

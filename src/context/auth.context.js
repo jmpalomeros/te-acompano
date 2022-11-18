@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from "react";
 import { verifyService } from "../service/auth.services";
-
 import PuffLoader from "react-spinners/PuffLoader";
 
 const AuthContext = createContext();
