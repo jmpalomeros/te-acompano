@@ -34,7 +34,6 @@ function SignUp() {
 
     try {
       const response = await uploadImageService(sendObj);
-      //console.log("foto", response.data.avatar);
       setAvatar(response.data.avatar);
       setIsFetching(false);
     } catch (error) {
@@ -77,12 +76,12 @@ function SignUp() {
   }
 
   return (
-    <div>
-      <h4>Registrate</h4>
+    <div id="form-signup-login">
+      <h4>Regístrate</h4>
 
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="firstName">Nombre</Form.Label>
+          <Form.Label htmlFor="firstName">Nombre<sup>*</sup></Form.Label>
           <Form.Control
             type="text"
             name="firstName"
@@ -93,7 +92,7 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="lastName">Apellidos</Form.Label>
+          <Form.Label htmlFor="lastName">Apellidos<sup>*</sup></Form.Label>
           <Form.Control
             type="text"
             name="lastName"
@@ -104,7 +103,7 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Label htmlFor="email">Email<sup>*</sup></Form.Label>
           <Form.Control
             type="email"
             name="email"
@@ -113,12 +112,12 @@ function SignUp() {
             placeholder="Escribe tu email"
           />
           <Form.Text className="text-muted">
-            Formate: tucorreo@tucorreo.com
+            Formato: tucorreo@tucorreo.com
           </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label htmlFor="password">Contraseña</Form.Label>
+          <Form.Label htmlFor="password">Contraseña<sup>*</sup></Form.Label>
           <Form.Control
             type="password"
             name="password"
@@ -126,7 +125,7 @@ function SignUp() {
             onChange={handlePasswordChange}
             placeholder="Crea tu contraseña"
           />
-          <Form.Text className="text-muted">Formato: Tucontraseña1!</Form.Text>
+          <Form.Text className="text-muted">Debe incluir al menos 8 caracteres, una mayúscula, un número y un símbolo</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -163,7 +162,8 @@ function SignUp() {
             placeholder="Escribe el nombre de tu ciudad"
           />
         </Form.Group>
-
+        <Form.Text>Los campos marcados con (<sup>*</sup>) son obligatorios</Form.Text>
+        <br />
         <Button onClick={handleSignup} variant="primary" type="submit">
           Enviar
         </Button>

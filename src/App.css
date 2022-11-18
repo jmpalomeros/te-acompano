@@ -41,7 +41,7 @@ Form {
   flex-direction: column;
 }
 
-#form-signup {
+#form-signup-login {
   display: flex;
   flex-direction: column;
   align-items: center;
