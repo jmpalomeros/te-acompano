@@ -4,13 +4,11 @@ import {
   getReviewDetailsService,
   editReviewService,
 } from "../service/review.services";
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function ReviewEdit() {
   const { reviewId } = useParams();
-
   const navigate = useNavigate();
   const [reviewInput, setReviewInput] = useState("");
   const [ratingInput, setRatingInput] = useState("");

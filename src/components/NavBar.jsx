@@ -8,13 +8,11 @@ import Button from "react-bootstrap/Button";
 
 function NavBar() {
   const { authenticaUser, isLoggedIn } = useContext(AuthContext);
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticaUser();
-    console.log("after autenticate logout");
     navigate("/");
   };
 

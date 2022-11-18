@@ -12,10 +12,8 @@ import CardGroup from "react-bootstrap/CardGroup";
 
 function ReviewDetails() {
   const navigate = useNavigate();
-
   const { reviewId } = useParams();
   const { user } = useContext(AuthContext);
-
   const [details, setDetails] = useState(null);
   const [isFetching, setFetching] = useState(true);
 

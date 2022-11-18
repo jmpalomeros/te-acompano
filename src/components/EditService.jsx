@@ -12,7 +12,6 @@ function EditService() {
   const navigate = useNavigate();
   const { serviceId } = useParams();
   const { user } = useContext(AuthContext);
-
   const [titleInput, setTitleInput] = useState("");
   const [typeServiceInput, setTypeServiceInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
@@ -26,7 +25,6 @@ function EditService() {
   const getDataService = async () => {
     try {
       const response = await getServiceDetailsService(serviceId);
-      console.log("GETDATA RESPONSE", response);
       setTitleInput(response.data.title);
       setTypeServiceInput(response.data.typeService);
       setDescriptionInput(response.data.description);
@@ -52,9 +50,7 @@ function EditService() {
         description: descriptionInput,
         city: cityInput,
       };
-
       await editServiceService(serviceId, updateService);
-
       navigate("/service-list");
     } catch (error) {
       navigate("/error");

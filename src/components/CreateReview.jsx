@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { createReviewService } from "../service/review.services";
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 function CreateReview() {
   const { serviceId } = useParams();
-
   const navigate = useNavigate();
-
   const [reviewInput, setReviewInput] = useState("");
   const [ratingInput, setRatingInput] = useState("");
 
@@ -27,7 +24,6 @@ function CreateReview() {
 
     try {
       await createReviewService(serviceId, newReview);
-
       navigate("/reviews");
     } catch (error) {
       console.log(error);

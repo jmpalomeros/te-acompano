@@ -64,7 +64,7 @@ function ServiceDetails() {
         {details.offeredServices.lastName}
       </p>
       <Accordion defaultActiveKey={["0"]} alwaysOpen>
-        <Accordion.Item eventKey="0">
+        <Accordion.Item eventKey="1">
           <Accordion.Header>
             <h4>Editar el servicio ofrecido</h4>
           </Accordion.Header>
@@ -82,7 +82,7 @@ function ServiceDetails() {
           </Accordion.Body>
         </Accordion.Item>
 
-        <Accordion.Item eventKey="1">
+        <Accordion.Item eventKey="2">
           <Accordion.Header>
             <h4>Reseñas sobre el voluntario de este servicio</h4>
           </Accordion.Header>
@@ -97,7 +97,7 @@ function ServiceDetails() {
           </Accordion.Body>
         </Accordion.Item>
 
-        <Accordion.Item eventKey="2">
+        <Accordion.Item eventKey="3">
           {details.offeredServices._id !== user.user._id && (
             <div>
               <Accordion.Header>

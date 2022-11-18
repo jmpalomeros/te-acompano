@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createNewServiceService } from "../service/service.services";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -30,7 +29,6 @@ function CreateService(props) {
     try {
       await createNewServiceService(newService);
       props.updateList();
-      console.log("new service", newService);
       navigate("/service-list");
     } catch (error) {
       console.log(error);

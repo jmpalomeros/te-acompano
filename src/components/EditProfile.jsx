@@ -10,14 +10,12 @@ import Form from "react-bootstrap/Form";
 
 function EditProfile(props) {
   const navigate = useNavigate();
-
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [avatarInput, setAvatarInput] = useState("");
   const [ageInput, setAgeInput] = useState(0);
   const [cityInput, setCityInput] = useState("");
   const [isFetching, setIsFetching] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -27,7 +25,6 @@ function EditProfile(props) {
   const getData = async () => {
     try {
       const response = await getUserDetailsService();
-      console.log("USER DETAILS", response.data);
       setFirstNameInput(response.data.firstName);
       setLastNameInput(response.data.lastName);
       setAvatarInput(response.data.avatar);

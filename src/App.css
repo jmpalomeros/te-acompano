@@ -4,11 +4,11 @@
   width: 70vw;
 }
 
-body{
+body {
   display: flex;
   justify-content: center;
   align-items: center;
-} 
+}
 
 .navbar {
   display: flex;
@@ -65,8 +65,8 @@ Form {
   align-items: center;
   margin-top: 20px;
 }
-.carousel-item{
-width: 68%;
+.carousel-item {
+  width: 68%;
 }
 
 .carouselCaption {
@@ -77,7 +77,6 @@ width: 68%;
 }
 
 .carouselCaption p {
-  
   color: black;
   font-weight: 800;
 }
@@ -87,11 +86,10 @@ width: 68%;
   font-weight: 800;
 }
 
-.homeText{
+.homeText {
   color: black;
-  margin-top:50px;
+  margin-top: 50px;
   text-align: center;
-  
 }
 
 .input-search {
