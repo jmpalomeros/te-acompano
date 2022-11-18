@@ -18,13 +18,11 @@ function AuthWrapper(props) {
     setIsFetching(true);
     try {
       const response = await verifyService();
-      console.log(response);
       //el token ya estaría validado en FE
       setIsLoggedIn(true);
       setUser(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       setIsLoggedIn(false);
       setUser(null);
       setIsFetching(false);

@@ -7,6 +7,7 @@ import {
 import { uploadImageService } from "../service/upload.services";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import PuffLoader from "react-spinners/PuffLoader";
 
 function EditProfile(props) {
   const navigate = useNavigate();
@@ -75,7 +76,13 @@ function EditProfile(props) {
   };
 
   if (isFetching === true) {
-    return <h4>Loading</h4>;
+    return (
+      <h4>
+        <div id="spinner">
+          <PuffLoader color={"blue"} size={50} />
+        </div>
+      </h4>
+    );
   }
 
   return (

@@ -63,6 +63,11 @@ function ServiceDetails() {
         Servicio ofrecido por: {details.offeredServices.firstName}{" "}
         {details.offeredServices.lastName}
       </p>
+      {details.offeredServices._id !== user.user._id && (
+                    <Button onClick={handleUpdate}>Aceptar Servicio</Button>
+                  )}
+                  <br />
+                  <br />
       <Accordion defaultActiveKey={["0"]} alwaysOpen>
         <Accordion.Item eventKey="1">
           <Accordion.Header>
@@ -73,14 +78,14 @@ function ServiceDetails() {
               <Card className="cards">
                 <Card.Body>
                   <EditService />
-                  {details.offeredServices._id !== user.user._id && (
-                    <Button onClick={handleUpdate}>Aceptar Servicio</Button>
-                  )}
+                  
                 </Card.Body>
+                
               </Card>
             </CardGroup>
           </Accordion.Body>
         </Accordion.Item>
+       
 
         <Accordion.Item eventKey="2">
           <Accordion.Header>
