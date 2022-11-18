@@ -13,7 +13,7 @@ Las reseñas, tanto creadas como recibidas, pueden consultarse, editarse y borra
 
 De este modo, TE ACOMPAÑA nace con la finalidad de facilitar la labor del voluntariado, conectando personas directamente sin necesidad de recurrir a instituciones, creando una red entre los usuarios que fomenta la colaboración, la ayuda y el contacto entre personas de un mismo entorno.
 
-Navegabilidad.
+FLUJO DE NAVEGACIÓN:
 
 Home: Página de inicio en la que se ofrece información sobre la web/app.
 Registro: El usuario accede una vez se encuentra en la web cliclando sobre el icono ubicado en el navbar.Es necesario registrarse para acceder a la web/app previo logado.
@@ -33,96 +33,51 @@ Reseñas: Apartado en el que el usuario puede consultar las reseñas que ha crea
 Error: Página a la que se redirige al usuario cuando existe algún error.
 Not-found: Página a la que se redirige al usuario cuando no existe resultado para su busqueda.
 
+RUTAS:
 
-Routes
-/ - Homepage
-/auth/signup - Signup form
-/auth/login - Login form
-/restaurants - restaurant list
-/restaurants/create - create a restaurant
-/restaurants/:id - restaurant detail
-/profile/me - my details and favorite restaurants
-404
-Pages
-Home Page (public)
-Sign in Page (anon only)
-Log in Page (anon only)
-Restaurants List Page (public only)
-Restaurant Create (user only)
-Restaurant Detail Page (public only)
-My Profile Page (user only)
-404 Page (public)
-Components
-Restaurant Card component
-Input: restaurant: any
-Output: favorite(restaurantId: string, on: boolean)
-Search component
-Output: change(terms: string)
-IO
-Services
-Auth Service
-auth.login(user)
-auth.signup(user)
-auth.logout()
-auth.me()
-auth.getUser() // synchronous
-Restaurant Service
-restaurant.list()
-restaurant.create(data)
-restaurant.detail(id)
-restaurant.addFavorite(id)
-restaurant.removeFavorite(id)
-Server
-Models
-User model
+Home -	/
+Signup -	/signup
+Login -	/login
+Profile -	/profile
+Service List -	/service
+Service details -	/service/:id/details
+Volunteer details	- /volunteer/:id/details
+NotFound -	/notFound
+Error -	/error
 
-username - String // required
-email - String // required & unique
-password - String // required
-favorites - [ObjectID<Restaurant>]
-Restaurant model
+POST	‘/auth/signup’
+POST	‘/auth/login’
+GET	‘/auth/verify’
 
-owner - ObjectID<User> // required
-name - String // required
-phone - String
-address - String
-API Endpoints/Backend Routes
-GET /auth/me
-POST /auth/signup
-body:
-username
-email
-password
-POST /auth/login
-body:
-username
-password
-POST /auth/logout
-body: (empty)
-POST /user/me/favorite
-body:
-restaurantId
-DELETE /user/me/favorite/:restaurantId
-body: (empty)
-GET /restaurant
-POST /restaurant
-body:
-name
-phone
-address
-GET /restaurant/:id
-Links
-Trello/Kanban
-Link to your trello board or picture of your physical board
+GET	‘/service’
+POST ‘/service’
+GET 	‘/service/:id’
+PATCH	‘/service/:id’
+	
+GET	‘/review’
+POST	‘/review’
+GET 	‘/review/:id’
+PATCH	‘/review/:id’
+DELETE	‘/review/:id’
+	
+GET	‘/user’
+PATCH	‘/user/edit’ 
+PATCH '/user/off’
 
-Git
-The url to your repository and to your deployed project
+LINKS
 
-Client repository Link Server repository Link
+Miro: https://miro.com/app/board/uXjVPFG66i8=/
 
-Deploy Link
+Github: 
+Link al repositorio del servidor: https://github.com/jmpalomeros/te-acompano-server
+Link al repositorio del cliente: https://github.com/jmpalomeros/te-acompano-client
 
-Slides
-The url to your presentation slides
+Deploy Link:
+Servidor: https://app.cyclic.sh/#/app/jmpalomeros-te-acompano-server/builds/2022-11-18T10:22:44.427Z/1668768622001
+Cliente: https://app.netlify.com/sites/te-acompano/deploys
 
-Slides Link
+Slides:
+https://docs.google.com/presentation/d/1oJj8tne9rU3rWHqulUJSrQga3NVExb33G3b1Zck25f8/edit?usp=sharing
+
+
+
