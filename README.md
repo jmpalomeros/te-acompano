@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+TE ACOMPAÑO
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DESCRIPCIÓN:
 
-## Available Scripts
+TE ACOMPAÑO es una web/app creada con la única finalidad de conectar a personas de tu entorno para prestar y/o recibir servicios de voluntariado.
+Previo registro, el usuario puede ver y buscar los servicios que quiere ofrecer o demandar, sirviendose para ello de dos buscadores. El primero filtra según el titulo del servicio. El segundo en función de la categoria del servicio: ayuda, ocio, otros. El usuario también dispone de un listado con los servicios existentes, pudiendo revisar cada uno de ellos clicando sobre él, informándose igualmente acerca del usuario que lo ofrece y leyendo las reseñas que otros usuarios han compartido.
 
-In the project directory, you can run:
+Una vez elegido el servicio del que quiere servirse, deberá aceptar el servicio, desapareciendo del listad y quedando registrado tanto en el perfil del oferente del servicio como del solicitante/aceptante.
 
-### `npm start`
+En el perfil, el usuario puede consultar sus datos y editarlos. También dispone de un listado relacionando los servicios que ofrece y los que demanda, figurando los que ha acepetado, pudiendo hacer reseñas sobre ellos. En este apartado el usuario también podrá crear un servicio y editarlo, antes de que sea aceptado, para su publicación en el listado de servicios.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Las reseñas, tanto creadas como recibidas, pueden consultarse, editarse y borrarse desde el propio perfil del usuario.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+De este modo, TE ACOMPAÑA nace con la finalidad de facilitar la labor del voluntariado, conectando personas directamente sin necesidad de recurrir a instituciones, creando una red entre los usuarios que fomenta la colaboración, la ayuda y el contacto entre personas de un mismo entorno.
 
-### `npm test`
+FLUJO DE NAVEGACIÓN:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Home: Página de inicio en la que se ofrece información sobre la web/app.
+Registro: El usuario accede una vez se encuentra en la web cliclando sobre el icono ubicado en el navbar.Es necesario registrarse para acceder a la web/app previo logado.
+Logado: Tras el registro el usuario debe logarse introducciendo los campos solicitados.
+Salir/Deslogado: El usuario finaliza sesión y vuelve a la página de inicio.
+Listado de servicios: Espacio en el que figuran los post con los servicios ofrecidos, pudiendo acceder a ellos cliclando sobre el titulo. 
+Busqueda de servicios por tipo de servicio: El buscador filtra en los servicios ofertados en atención a la categoria que tienen: Ayuda, Ocio, Otros
+Busqueda de servicio por el titulo: El buscador ofrece los resultados obtenidos en un campo libre.
+Aceptar un servicio: Si el usuario está interesado en recibir un servicio, solo tiene que cliclar sobre el boton de acpetado una vez ha revisado el contenido del servicio y consultando los datos del oferente.
+Consultar detalles del servicio: Clicando sobre el propio servicio.
+Consultar detalles del oferente del servicio: Clicando sobre el oferente, puedes consultar sus datos, servicios ofrecidos y reseñas que han realizado otros usuarios.
+Perfil: El usuario accede a su perfil, pudiendo consultar y editar sus datos.
+Crear servicio: Desde su perfil, el usuario puede crear un servicio y editarlo antes de que sea aceptado.
+Servicios aceptados: Sección en la que figuran todos los servicios aceptados para su consulta, revisión de las reseñas que existen sobre el oferente y, en su caso, crear reseña sobre ese servicio una vez se ha efectuado.
+Servicios ofrecidos: En esta sección se encuentran todos los post creados por el usuario en los que ofrece los diversos servicios que ha creado.
+Reseñas: Apartado en el que el usuario puede consultar las reseñas que ha creado y que ha recibido, pudiendo actualizar y borrar las primeras.
+Error: Página a la que se redirige al usuario cuando existe algún error.
+Not-found: Página a la que se redirige al usuario cuando no existe resultado para su busqueda.
 
-### `npm run build`
+RUTAS:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Home -	/
+Signup -	/signup
+Login -	/login
+Profile -	/profile
+Service List -	/service
+Service details -	/service/:id/details
+Volunteer details	- /volunteer/:id/details
+NotFound -	/notFound
+Error -	/error
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+POST	‘/auth/signup’
+POST	‘/auth/login’
+GET	‘/auth/verify’
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+GET	‘/service’
+POST ‘/service’
+GET 	‘/service/:id’
+PATCH	‘/service/:id’
+	
+GET	‘/review’
+POST	‘/review’
+GET 	‘/review/:id’
+PATCH	‘/review/:id’
+DELETE	‘/review/:id’
+	
+GET	‘/user’
+PATCH	‘/user/edit’ 
+PATCH '/user/off’
 
-### `npm run eject`
+LINKS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Miro: https://miro.com/app/board/uXjVPFG66i8=/
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Github: 
+Link al repositorio del servidor: https://github.com/jmpalomeros/te-acompano-server
+Link al repositorio del cliente: https://github.com/jmpalomeros/te-acompano-client
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Deploy Link:
+Servidor: https://app.cyclic.sh/#/app/jmpalomeros-te-acompano-server/builds/2022-11-18T10:22:44.427Z/1668768622001
+Cliente: https://app.netlify.com/sites/te-acompano/deploys
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Slides:
+https://docs.google.com/presentation/d/1oJj8tne9rU3rWHqulUJSrQga3NVExb33G3b1Zck25f8/edit?usp=sharing
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
